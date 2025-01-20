@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('articles'); // Ajouter cette ligne
+        
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
@@ -18,8 +20,8 @@ return new class extends Migration
             $table->string('extrait');
             $table->text('contenu');
             $table->string('image');
-            $table->string('status')->default('En cours');
-            $table->json('notes')->nullable(); // json est un type de données qui permet de stocker des données sous forme de tableau
+            $table->string('couleur')->default('#4f46e5');
+            $table->float('notes', 2, 1)->default(0); // 2 chiffres avant la virgule, 1 chiffre après
             $table->timestamps();
         });
     }

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Statut;
 use App\Models\User;
+use App\Models\Responsable;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -16,17 +18,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        
-        if (!User::where('email', 'test@example.com')->exists()) {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com', 
+        // Exécuter ThemeSeeder en premier
+        $this->call([
+            ThemeSeeder::class,
+            NumeroSeeder::class,
+            StatutSeeder::class,
         ]);
-     }
+
+        // Ensuite créer les utilisateurs et responsables
+        User::factory(20)->create();
+        Responsable::factory(20)->create();
+
+        if (!User::where('email', 'test@example.com')->exists()) {
+            User::factory()->create([
+                'name' => 'Test User',
+                'email' => 'test@example.com', 
+            ]);
+        }
+
+        // Enfin, créer les articles
         $this->call([
             ArticleSeeder::class,
         ]);
-        
     }
 }
