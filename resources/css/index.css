@@ -335,6 +335,17 @@ body {
     font-weight: 600;
     text-decoration: none;
 }
+
+.theme-category {
+    font-size: 1.5rem;
+    color: #4f46e5;
+    margin-bottom: -17px;
+    margin-top: 4px;
+    padding-bottom: 40px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 .post-number {
     color: #24232a;
     margin-bottom: -19px;
@@ -382,6 +393,23 @@ body {
     color: #64748b;
     line-height: 1.4; /* Reduced from 1.5 */
     margin-bottom: 20px; /* Reduced from 24px */
+}
+.post-date {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.theme-description{
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.4; 
+    margin-bottom: 20px; 
+    white-space: normal;        /* Force le retour à la ligne normal */
+    overflow-wrap: break-word;  /* Coupe les mots longs */
+    width: 100%;               /* Utilise toute la largeur disponible */
+    display: block;            /* Affiche en bloc */
 }
 
 .post-read-more {

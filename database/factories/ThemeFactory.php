@@ -9,10 +9,12 @@ class ThemeFactory extends Factory
 {
     public function definition(): array
     {
+        $created_at = fake()->dateTimeBetween('2024-11-01', '2025-01-01');
         $name = fake()->unique()->words(2, true);
         return [
-            'name' => $name,
-            'slug' => Str::slug($name),
+            'couleur' => fake()->safeHexColor,
+            'created_at' => $created_at,
+            'updated_at' => $created_at,
         ];
     }
 }

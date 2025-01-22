@@ -13,11 +13,10 @@
                     value="{{ $item->id }}"
                     @selected(old($name, $value) == $item->id)
                 >
-                    @if($name == 'theme_id')
-                        {{ $item->name }}
-                    @else
-                        {{ $item->numero }}
+                    @if($name == 'numero_id')
+                        {{ $item->numero }}   
                     @endif
+                    {{ $item->name }}
                 </option>
             @endforeach
         </select>

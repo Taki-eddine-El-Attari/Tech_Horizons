@@ -6,6 +6,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\Theme;
 use App\Models\Numero;
+use App\Models\Statut;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Routing\Controller as BaseController;
@@ -17,17 +18,19 @@ class AdminController extends BaseController
 
     public function __construct()
     {
-        $this->middleware('editeur'); 
+        $this->middleware('editeur');
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.articles.index' , 
-        [
-            'articles' => Article::without('theme', 'numero', 'statut')->orderBy('created_at', 'desc')->get(),
-       ]);
+        return view(
+            'admin.articles.index',
+            [
+                'articles' => Article::without('theme', 'numero', 'statut')->orderBy('created_at', 'desc')->get(),
+            ]
+        );
     }
 
     /**
@@ -46,14 +49,14 @@ class AdminController extends BaseController
         return $this->showForm($article);
     }
 
-    protected function showForm(Article $article = new Article) : View
+    protected function showForm(Article $article = new Article): View
     {
         return view('admin.articles.form', [
             'article' => $article,
             'themes' => Theme::orderBy('name')->get(),
-            'numeros' => Numero::orderBy('numero')->get()
+            'numeros' => Numero::orderBy('numero')->get(),
+            'statuts' => Statut::orderBy('name')->get(),
         ]);
-
     }
 
     /**
@@ -73,31 +76,37 @@ class AdminController extends BaseController
         return $this->save($request->validated(), $article);
     }
 
-    protected function save(array $data, Article $article = null) : RedirectResponse
+    protected function save(array $data, Article $article = null): RedirectResponse
     {
-       if(isset($data['image'])){
-         if(isset($article->image)){
-            Storage::delete($article->image);
-         }
-         $data['image'] = $data['image']->store('Images Articles');
-        } 
+        if (isset($data['image'])) {
+            if (isset($article->image)) {
+                Storage::delete($article->image);
+            }
+            $data['image'] = $data['image']->store('Images Articles');
+        }
 
         $data['extrait'] = Str::limit($data['contenu'], 150);
         $data['couleur'] = '#4f46e5'; // couleur par défaut
         $data['notes'] = 0;
-        $data['statut_id'] = 3;  // Pour etre publié
-         
+
+        if (isset($data['statut_id'])) {
+            $data['statut_id'] = $data['statut_id'];
+        }
+
+        if (!isset($data['statut_id'])) {
+            $data['statut_id'] = 3; // publie par défaut
+        }
+
         // Si vous avez un numéro_id, l'ajouter directement
         if (isset($data['numero_id'])) {
             $data['numero_id'] = $data['numero_id'];
         }
 
-        $article = Article::updateOrCreate(['id' => $article?->id] , $data);
+        $article = Article::updateOrCreate(['id' => $article?->id], $data);
 
         return redirect()
             ->route('articles.show', ['article' => $article])
             ->withStatus($article->wasRecentlyCreated ? 'Article publié avec succès' : 'Article mis à jour avec succès');
-
     }
 
     /**

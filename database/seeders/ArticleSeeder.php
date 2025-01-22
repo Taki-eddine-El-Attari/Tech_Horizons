@@ -25,17 +25,17 @@ class ArticleSeeder extends Seeder
         Article::factory(40)
         
         ->sequence(fn () => [
-            'theme_id' => $themes->random(),
+            'theme_id' => $themes->random(), // un theme au hasard
         ]) 
         ->sequence(fn () => [
-            'numero_id' => $numeros->random(),
+            'numero_id' => $numeros->random(), // un numero au hasard
         ]) 
         ->sequence(fn () => [
-            'statut_id' => $status->random(),
+            'statut_id' => $status->random(), // un statut au hasard
         ]) 
-        ->hascommentaire(5, fn() => ['user_id' => $users->random()])
+        ->hascommentaire(5, fn() => ['user_id' => $users->random()]) // 5 commentaires par article
         
 
-        ->create();
+        ->create(); // Créer 40 articles
     }
 }

@@ -5,7 +5,9 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\ConnexionController;
 use App\Http\Controllers\Auth\InscriptionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InviteController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/inscription', [InscriptionController::class, 'showRegistrationForm'])->name('inscription');
 Route::post('/inscription', [InscriptionController::class, 'inscription']);
@@ -22,7 +24,15 @@ Route::patch('/password', [HomeController::class, 'updatePassword'])->name('pass
 
 Route::resource('/admin/articles', AdminController::class)->except('show')->names('admin.articles');
 
-Route::get('/', [ArticleController::class, 'index'])->name('index');
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('index');
+    }
+    return app(InviteController::class)->indexInvite();
+})->name('indexinvite');
+
+
+Route::get('/Page_Principale', [ArticleController::class, 'index'])->name('index');
 Route::get('/themes/{theme:slug}', [ArticleController::class, 'articlebytheme'])->name('articles.bytheme');
 Route::get('/Statuts/{statut}', [ArticleController::class, 'articlebystatut'])->name('articles.bystatut');
 Route::get('/{article}', [ArticleController::class, 'show'])->name('articles.show'); 

@@ -163,7 +163,7 @@ a:hover {
   display: block;
   color: #dc2626;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
+  margin-top: 0.12rem;
 }
 
 .error-container {
@@ -176,7 +176,7 @@ a:hover {
 .error-icon {
   width: 16px;
   height: 16px;
-  margin-top: 5px;
+  margin-top: 12px;
   color: #dc2626;
 }
 

@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Commentaire;
-use App\Models\Numero;
 use App\Models\Statut;
 use App\Models\Theme;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\View\View;
 class ArticleController extends BaseController
 {
@@ -68,16 +65,30 @@ protected function articleView(array $filters): View
     {
         $validated = $request->validate([
             'commentaire' => ['required', 'string', 'min:2', 'max:255'],
+            'rating' => ['nullable', 'integer', 'min:0', 'max:5'], // le rating optionnel
         ]);
 
         $commentaire = new Commentaire();
         $commentaire->contenu = $validated['commentaire'];
-        $commentaire->article_id = $article->id;
+        $commentaire->note = $validated['rating'] ?? 0; 
+        $commentaire->article_id = $article->id; 
         $commentaire->user_id = Auth::id();
         $commentaire->save();
 
         return back()->with('status', 'Commentaire publié !');
     }
 
-    
+    public function calculateAverageRating(Article $article)
+    {
+        $comments = Commentaire::where('article_id', $article->id);
+        $sumRatings = $comments->sum('note');
+        $totalComments = $comments->count();
+        
+        if ($totalComments > 0) {
+            $average = $sumRatings / $totalComments;
+            return round($average, 1); // Arrondi à 1 décimale
+        }
+        
+        return 0; // Retourne 0 s'il n'y a pas de commentaires
+    }
 }

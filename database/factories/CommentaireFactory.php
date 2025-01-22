@@ -20,6 +20,7 @@ class CommentaireFactory extends Factory
 
         return [
             'contenu' => fake()->sentence,
+            'note' => fake()->numberBetween(0, 5),
             'created_at' => $created_at,
             'updated_at' => $created_at,
         ];

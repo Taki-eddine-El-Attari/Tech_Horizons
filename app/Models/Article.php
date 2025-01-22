@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Commentaire;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Article extends Model
 {
@@ -64,6 +67,38 @@ class Article extends Model
     public function exists(): bool
     {
         return (bool) $this->id;
+    }
+
+    public function commentaires(Article $article, Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'commentaire' => ['required', 'string', 'min:2', 'max:255'],
+            'rating' => ['nullable', 'integer', 'min:0', 'max:5'], // le rating optionnel
+        ]);
+
+        $commentaire = new Commentaire();
+        $commentaire->contenu = $validated['commentaire'];
+        $commentaire->note = $validated['rating'] ?? 0; 
+        $commentaire->article_id = $article->id; 
+        $commentaire->user_id = Auth::id();
+        $commentaire->save();
+
+        return back()->with('status', 'Commentaire publié !');
+    }
+
+    public function calculateAverageRating()
+    {
+        // Utiliser la relation directement sans ()
+        $comments = $this->commentaire;
+        
+        if ($comments->isEmpty()) {
+            return 0;
+        }
+        
+        $sumRatings = $comments->sum('note');
+        $totalComments = $comments->count();
+        
+        return round($sumRatings / $totalComments, 1);
     }
 
 }

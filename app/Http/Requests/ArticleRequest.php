@@ -31,6 +31,7 @@ class ArticleRequest extends FormRequest
             'image' => [Rule::requiredIf($request->isMethod('post')), 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'theme_id' => 'required|exists:themes,id',
             'numero_id' => 'required|exists:numeros,id',
+            'statut_id' => Rule::when($this->isMethod('PUT'), ['required', 'exists:statuts,id']),
         ];
     }
 
@@ -49,6 +50,8 @@ class ArticleRequest extends FormRequest
             'theme_id.exists' => 'Le thème sélectionné n\'existe pas',
             'numero_id.required' => 'Le numéro est obligatoire',
             'numero_id.exists' => 'Le numéro sélectionné n\'existe pas',
+            'statut.required' => 'Le statut est obligatoire',
+            'statut.in' => 'Le statut doit être soit brouillon soit publié',
         ];
     }
 }

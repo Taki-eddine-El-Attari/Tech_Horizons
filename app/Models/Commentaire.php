@@ -12,7 +12,7 @@ class Commentaire extends Model
 
     protected $with =['user'];
 
-    protected $fillable = ['contenu', 'article_id', 'user_id'];
+    protected $fillable = ['contenu','note', 'article_id', 'user_id'];
 
     public function user(): BelongsTo
     {
