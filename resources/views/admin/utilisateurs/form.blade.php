@@ -20,6 +20,14 @@
                     :value="old('role', $user->role?->value)"
                     :list="collect(\App\Enumérations\Role::cases())->map(fn($role) => (object)['id' => $role->value, 'name' => $role->label()])"
                 ></x-select>
+                <x-select 
+                    label="Theme" 
+                    name="theme_id" 
+                    :value="old('theme_id', $user->theme?->name)"
+                    :list="$themes"
+                ></x-select>
+
+
             </div>
 
             <div class="form-actions">

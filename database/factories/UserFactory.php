@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enumérations\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,13 +24,25 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        $role = Role::cases()[array_rand(Role::cases())];
+        $attributes = [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'role' => $role,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
+
+        // Assigner un thème si c'est un Responsable
+        if ($role === Role::Responsable) {
+            $theme = \App\Models\Theme::inRandomOrder()->first();
+            if ($theme) {
+                $attributes['theme_id'] = $theme->id;
+            }
+        }
+
+        return $attributes;
     }
 
     /**

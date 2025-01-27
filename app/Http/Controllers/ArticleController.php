@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Article;
 use App\Models\BrowsingHistory;
 use App\Models\Commentaire;
@@ -11,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+
 class ArticleController extends BaseController
 {
     public function __construct()
@@ -19,47 +21,50 @@ class ArticleController extends BaseController
         $this->middleware(['auth', 'editeur'])->only(['destroyComment']);
     }
 
-    public function index(Request $request) :View
+    public function index(Request $request): View
     {
         return $this->articleView($request->search ? ['search' => $request->search] : []);
     }
 
     public function articlebytheme(Theme $theme): View
     {
-       return $this->articleView(['theme' => $theme]);
-
+        return $this->articleView(['theme' => $theme]);
     }
 
     public function articlebynumero($numero, Theme $theme): View
     {
-        return view('Acceuil.index',[
+        return view('Acceuil.index', [
             'articles' => Article::where('numero_id', $numero)->latest()->paginate(10),
         ]);
     }
 
     public function articlebystatut(Statut $statut): View
     {
-        return view('Acceuil.index',[
-           // 'articles' => $statut->articles()->latest()->paginate(10),
+        return view('Acceuil.index', [
+            // 'articles' => $statut->articles()->latest()->paginate(10),
 
             'articles' => Article::where('statut_id', $statut->id)->latest()->paginate(10),
         ]);
-        
-
     }
 
     protected function articleView(array $filters): View
     {
-    return view('Acceuil.index',[
-        'articles' => Article::filters($filters)->latest()->paginate(10),
-    ]);
+        if (Auth::user()->role === 'Responsable') {
+            return view('Acceuil.index', [
+                'articles' => Article::where('theme_id', Auth::user()->theme_id)->latest()->paginate(10),
+            ]);
+        } else {
+            return view('Acceuil.index', [
+                'articles' => Article::filters($filters)->latest()->paginate(10),
+            ]);
+        }
+        
+    }
 
-}
-
-    public function show(Article $article) :View
+    public function show(Article $article): View
     {
         // Si l'utilisateur est connecté, on enregistre l'historique de navigation
-        if(Auth::check()) {
+        if (Auth::check()) {
             BrowsingHistory::create([
                 'user_id' => Auth::id(),
                 'article_id' => $article->id,
@@ -67,7 +72,7 @@ class ArticleController extends BaseController
             ]);
         }
 
-        return view('Acceuil.show',[
+        return view('Acceuil.show', [
             'article' => $article,
         ]);
     }
@@ -81,8 +86,8 @@ class ArticleController extends BaseController
 
         $commentaire = new Commentaire();
         $commentaire->contenu = $validated['commentaire'];
-        $commentaire->note = $validated['rating'] ?? 0; 
-        $commentaire->article_id = $article->id; 
+        $commentaire->note = $validated['rating'] ?? 0;
+        $commentaire->article_id = $article->id;
         $commentaire->user_id = Auth::id();
         $commentaire->save();
 
@@ -94,12 +99,12 @@ class ArticleController extends BaseController
         $comments = Commentaire::where('article_id', $article->id);
         $sumRatings = $comments->sum('note');
         $totalComments = $comments->count();
-        
+
         if ($totalComments > 0) {
             $average = $sumRatings / $totalComments;
             return round($average, 1); // Arrondi à 1 décimale
         }
-        
+
         return 0; // Retourne 0 s'il n'y a pas de commentaires
     }
 

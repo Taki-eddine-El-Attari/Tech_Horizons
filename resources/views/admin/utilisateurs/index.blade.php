@@ -15,7 +15,8 @@
                 <tr>
                     <th>Nom et prénom</th>
                     <th>Role</th>
-                    <th>Email</th> 
+                    <th>Theme</th> 
+                    <th>Email</th>                                       
                     <th></th>                   
                     <th></th>
                 </tr>
@@ -25,6 +26,7 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->role }}</td>
+                    <td>{{ $user->theme->name ?? 'Aucun' }}</td>
                     <td>{{ $user->email }}</td>
                     <td class="text-right">
                         <a href="{{ route('admin.utilisateurs.edit', $user) }}" class="link-primary">

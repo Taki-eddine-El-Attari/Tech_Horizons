@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enumérations\Role;
 use App\Http\Requests\UserRequest;
+use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,11 @@ class CrudUserController extends BaseController
     public function showForm(?User $user = null): View
     {
         $user = $user ?? new User();
-        return view('admin.utilisateurs.form', ['user' => $user]);
+        return view('admin.utilisateurs.form', [
+            'user' => $user,
+            'themes' => Theme::orderBy('name')->get(),
+
+        ]);
     }
 
     public function store(UserRequest $request): RedirectResponse
@@ -65,6 +70,17 @@ class CrudUserController extends BaseController
 
     public function save(array $data, User $user = null): RedirectResponse
     {
+        // Gestion du theme_id en fonction du rôle
+        if ($data['role'] === Role::Responsable->value) {
+            if (!isset($data['theme_id']) || is_null($data['theme_id'])) {
+                // Si aucun thème n'est sélectionné, en prendre un au hasard
+                $theme = Theme::inRandomOrder()->first();
+                $data['theme_id'] = $theme ? $theme->id : null;
+            }
+        } else {
+            $data['theme_id'] = null;
+        }
+
         if ($user) {
             // Modification
             if (empty($data['password'])) {
@@ -83,7 +99,6 @@ class CrudUserController extends BaseController
             ->route('admin.utilisateurs.index')
             ->withStatus($user->wasRecentlyCreated ? 'Utilisateur ajouté avec succès' : 'Utilisateur mis à jour avec succès');
     }
-
 
     public function destroy($id): RedirectResponse
     {

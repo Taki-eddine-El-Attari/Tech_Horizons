@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
         $rules = [
             'name' => ['required', 'string', 'between:5,255'],
             'role' => ['required', Rule::in(Role::values())],
+            'theme_id' => 'required_if:role,Responsable|exists:themes,id',
         ];
 
         if ($this->isMethod('POST')) {
@@ -39,6 +40,7 @@ class UserRequest extends FormRequest
             $rules['email'] = ['nullable', 'email'];
             $rules['password'] = ['nullable', 'string', 'min:8'];
         }
+        
 
         return $rules;
     }
@@ -55,7 +57,8 @@ class UserRequest extends FormRequest
             'password.required' => 'Le mot de passe est obligatoire',
             'password.string' => 'Le mot de passe doit être une chaîne de caractères',
             'password.min' => 'Le mot de passe doit faire au moins 8 caractères',
-
+            'theme_id.required_if' => 'Le thème est obligatoire pour un Responsable',
+            'theme_id.exists' => 'Le thème sélectionné n\'existe pas',
         ];
     }
 
