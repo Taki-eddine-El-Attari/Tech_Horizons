@@ -25,4 +25,9 @@ class Theme extends Model
         return $this->hasMany(Article::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }

@@ -90,3 +90,45 @@ class Rating {
 Array.from(document.querySelectorAll(".rating")).forEach(
     (ratingEl) => new Rating(ratingEl)
 );
+
+// Ajoutez ce code à la fin du fichier
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('deleteModal');
+    const modalBackdrop = document.getElementById('deleteModal-backdrop');
+    const cancelButton = document.getElementById('cancelDelete');
+    const confirmButton = document.getElementById('confirmDelete');
+    let currentFormId = null;
+
+    // Gestionnaire pour les liens de suppression
+    document.querySelectorAll('.delete-comment').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentFormId = this.getAttribute('data-form');
+            modal.classList.add('active');
+            modalBackdrop.classList.add('active');
+        });
+    });
+
+    // Fermer la modale lors du clic sur Annuler
+    cancelButton.addEventListener('click', function() {
+        modal.classList.remove('active');
+        modalBackdrop.classList.remove('active');
+        currentFormId = null;
+    });
+
+    // Fermer la modale lors du clic sur l'arrière-plan
+    modalBackdrop.addEventListener('click', function() {
+        modal.classList.remove('active');
+        modalBackdrop.classList.remove('active');
+        currentFormId = null;
+    });
+
+    // Confirmer la suppression
+    confirmButton.addEventListener('click', function() {
+        if (currentFormId) {
+            document.getElementById(currentFormId).submit();
+        }
+        modal.classList.remove('active');
+        modalBackdrop.classList.remove('active');
+    });
+});

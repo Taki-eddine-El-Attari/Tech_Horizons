@@ -31,9 +31,14 @@ class Article extends Model
 
     public function scopeFilters(Builder $query, array $filters): void
     {
+        
         if(isset($filters['search'])){
             $query->where(fn (Builder $query) => $query
             ->where('titre', 'like', '%'.$filters['search'].'%')
+            ->orWhereHas('theme', fn (Builder $query) => $query->where('name', 'like', '%'.$filters['search'].'%'))
+            ->orWhereHas('numero', fn (Builder $query) => $query->where('numero', 'like', '%'.$filters['search'].'%'))
+            ->orWhereHas('statut', fn (Builder $query) => $query->where('name', 'like', '%'.$filters['search'].'%'))
+            ->orWhereHas('commentaire', fn (Builder $query) => $query->where('contenu', 'like', '%'.$filters['search'].'%'))
             ->orWhere('contenu', 'like', '%'.$filters['search'].'%')
             );
         }

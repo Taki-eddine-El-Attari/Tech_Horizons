@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Theme;
+use App\Models\BrowsingHistory;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +22,21 @@ class HomeController extends BaseController
     
     public function index(): View
     {
-        return view('Home.index');
+        $themes = Theme::all();
+        return view('Home.index', compact('themes'));
+    }
+
+    public function updatetheme(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+        $validated = $request->validate([
+            'theme_id' => ['required', 'array'],
+            'theme_id.*' => ['exists:themes,id']
+        ]);
+
+        $user->themes()->sync($validated['theme_id']);
+        
+        return redirect()->route('home')->withStatus('Thèmes mis à jour avec succès !');
     }
 
     public function updateProfile(Request $request): RedirectResponse
@@ -60,4 +76,29 @@ class HomeController extends BaseController
         
         return redirect()->route('home')->withStatus('Mot de passe mis à jour avec succès !');
     }
+
+    public function history(Request $request): View
+    {
+        $histories = BrowsingHistory::where('user_id', Auth::id())
+            ->with(['article.theme'])
+            ->filter(request(['search', 'theme', 'date']))
+            ->latest('viewed_at')
+            ->paginate(10)
+            ->withQueryString();
+
+        $themes = Theme::all();
+
+        return view('Historique.index', compact('histories', 'themes'));
+    }
+
+    public function destroyHistory(BrowsingHistory $history): RedirectResponse
+    {
+        if ($history->user_id !== Auth::id()) {
+            abort(403);
+        }
+        
+        $history->delete();
+        return redirect()->route('history')->withStatus('Historique supprimé avec succès');
+    }
+
 }

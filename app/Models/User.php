@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -48,8 +49,31 @@ class User extends Authenticatable
             'role' => Role::class,
         ];
     }
+
     public function isEditeur(): bool
     {
         return $this->role === Role::Editeur;
     }
+
+    public function isResponsable(): bool
+    {
+        return $this->role === Role::Responsable;
+    }
+
+    public function isAbonne(): bool
+    {
+        return $this->role === Role::Abonne;
+    }
+
+    public function themes()
+    {
+        return $this->belongsToMany(Theme::class);
+    }
+
+    public function browsingHistories()
+    {
+        return $this->hasMany(BrowsingHistory::class);
+    }
+
+    
 }

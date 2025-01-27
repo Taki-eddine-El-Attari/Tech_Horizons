@@ -1,4 +1,23 @@
 <x-default-layout titre=" Mon compte ">
+    @if(Auth::user()->isAbonne())
+    <form action="{{ route('theme.update') }}" method="POST" class="password-form">
+        @csrf
+        @method('PATCH')
+        <div class="form-section">
+            <h1 class="form-title">Gestion d'abonnements</h1>
+            <p class="form-description">Gérez vos abonnements.</p>
+
+            <div class="form-fields">
+                <x-select name="theme_id" label="Thème" :list="$themes" :value="old('theme_id', auth()->user()->theme_id)" multiple help="Appuyez sur le bouton Ctrl pour la sélection multiple"></x-select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="form-submit-button">Modifier mes abonnées</button>
+            </div>
+        </div>
+    </form>
+    @endif
+
     <form action="{{ route('profile.update') }}" method="POST" class="password-form">
         @csrf
         @method('PATCH')

@@ -13,7 +13,6 @@ body {
   max-width: 405px;
   margin: 0 auto;
   margin-top: 60px;
-  padding: 0 20px;
 }
 
 .login-wrap {
@@ -22,15 +21,16 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: relative;
-  padding-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 0.1rem;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   color: #4f46e5;
   position: absolute;
-  top: -70px;
+  top: -65px;
   left: 50%;
   transform: translateX(-50%);
 }

@@ -12,7 +12,7 @@
             </a>
             @endif
             @if($article->numero)
-            <a href="{{ route('articles.bynumeroandtheme', ['numero' => $article->numero->numero, 'theme' => $article->theme->slug]) }}" class="post-number">
+            <a href="{{ route('articles.bynumero', ['numero' => $article->numero->numero]) }}" class="post-number">
             Numéro: {{ $article->numero->numero }}
             </a>
             @endif
