@@ -11,7 +11,11 @@
             <div class="form-fields">
                 <x-input label="Titre" name="titre" minlength="3" :value="old('titre', $article->titre )"></x-input>
                 <x-input label="Slug" name="slug" minlength="3" :value="old('slug', $article->slug )" help="Le slug sera généré automatiquement. Personnalisez-le uniquement si nécessaire."></x-input>
-                <x-select name="theme_id" label="Thème" :list="$themes" :value="old('theme_id', $article->theme_id )"></x-select>
+                @if(auth()->user()->isEditeur())
+                    <x-select name="theme_id" label="Thème" :list="$themes" :value="old('theme_id', $article->theme_id )"></x-select>
+                @else
+                    <input type="hidden" name="theme_id" value="{{ auth()->user()->theme_id }}">
+                @endif
                 <x-select name="numero_id" label="Numéro" :list="$numeros" :value="old('numero_id', $article->numero_id )"></x-select>
                 @if($article->exists)
                 <x-select name="statut_id" label="Statut" :list="$statuts" :value="old('statut_id', $article->statut_id)"></x-select>

@@ -18,6 +18,7 @@ class CrudArticleController extends BaseController
 {
     public function __construct()
     {
+        
         $this->middleware(['auth', function ($request, $next) {
             if (Auth::user()->isResponsable() || Auth::user()->isEditeur()) {
                 return $next($request);
@@ -31,12 +32,21 @@ class CrudArticleController extends BaseController
      */
     public function index()
     {
-        return view(
-            'admin.articles.index',
-            [
-                'articles' => Article::without('theme', 'numero', 'statut')->orderBy('created_at', 'desc')->get(),
-            ]
-        );
+        $user = Auth::user();
+        $query = Article::with(['theme', 'numero', 'statut']);
+        
+        // Si l'utilisateur est responsable, on affiche uniquement les articles de son thème
+        if ($user->isResponsable()) { 
+            $query->whereHas('theme', function($q) use ($user) { 
+                $q->where('id', $user->theme_id);
+            });
+        }
+
+        $articles = $query->orderBy('created_at', 'desc')->get();
+
+        return view('admin.articles.index', [
+            'articles' => $articles
+        ]);
     }
 
     /**

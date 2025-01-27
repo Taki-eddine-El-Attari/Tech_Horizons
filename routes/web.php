@@ -50,6 +50,5 @@ Route::get('/Numeros/{numero}', [ArticleController::class, 'articlebynumero'])->
 
 Route::post('/articles/{article}/commentaire', [ArticleController::class, 'commentaire'])->name('articles.commentaire');
 
-Route::delete('/commentaires/{commentaire}', [ArticleController::class, 'destroyComment'])->name('commentaires.destroy')
-->middleware(['auth', 'editeur']);
+Route::delete('/commentaires/{commentaire}', [ArticleController::class, 'destroyComment'])->name('commentaires.destroy');
 
