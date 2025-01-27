@@ -11,7 +11,7 @@
             <div class="form-fields">
                 <x-input label="Titre" name="titre" minlength="3" :value="old('titre', $article->titre )"></x-input>
                 <x-input label="Slug" name="slug" minlength="3" :value="old('slug', $article->slug )" help="Le slug sera généré automatiquement. Personnalisez-le uniquement si nécessaire."></x-input>
-                @if(auth()->user()->isEditeur())
+                @if(auth()->user()->isEditeur() || auth()->user()->isAbonne())
                     <x-select name="theme_id" label="Thème" :list="$themes" :value="old('theme_id', $article->theme_id )"></x-select>
                 @else
                     <input type="hidden" name="theme_id" value="{{ auth()->user()->theme_id }}">

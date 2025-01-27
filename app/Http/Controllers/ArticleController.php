@@ -49,14 +49,39 @@ class ArticleController extends BaseController
 
     protected function articleView(array $filters): View
     {
-    return view('Acceuil.index',[
-        'articles' => Article::filters($filters)->latest()->paginate(10),
-    ]);
+        $query = Article::filters($filters);
 
-}
+        //Gestion des abonnements
+        if (Auth::check()) {
+            $user = Auth::user();
+            
+            // Si l'utilisateur est abonné
+            if ($user->isAbonne()) {
+                // Récupérer les theme_ids de l'utilisateur depuis la table pivot
+                $userThemeIds = $user->themes()->pluck('themes.id')->toArray();
+                
+                if (!empty($userThemeIds)) {
+                    // Afficher uniquement les articles des thèmes auxquels l'utilisateur est abonné
+                    $query->whereIn('theme_id', $userThemeIds);
+                }
+                
+                // Et uniquement les articles publiés
+                $query->where('statut_id', 3);
+            }
+        }
+
+        return view('Acceuil.index', [
+            'articles' => $query->latest()->paginate(10),
+        ]);
+    }
 
     public function show(Article $article) :View
     {
+        // Vérifier si l'utilisateur abonné peut voir cet article
+        if (Auth::check() && Auth::user()->isAbonne() && $article->statut_id !== 3) {
+            abort(403, 'Cet article n\'est pas encore publié');
+        }
+
         // Si l'utilisateur est connecté, on enregistre l'historique de navigation
         if(Auth::check()) {
             BrowsingHistory::create([

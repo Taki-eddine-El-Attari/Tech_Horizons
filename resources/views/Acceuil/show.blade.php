@@ -1,8 +1,4 @@
 <x-default-layout :titre=" $article->titre ">
-    <header>
-        @vite(['resources/css/show.css', 'resources/js/show.js'])
-    </header>
-
     <div class="posts">
       <x-article :$article />
       @auth

@@ -7,7 +7,7 @@
     <link rel="icon" href="{{ asset('/images/logos/logo.png') }}">
     <title>{{ $titre }}</title> {{-- Récupère le nom de l'application dans le fichier .env --}}
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/js/historiques.js', 'resources/js/index.js'])
+    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/css/show.css' , 'resources/js/historiques.js', 'resources/js/index.js' , 'resources/js/show.js'])
 </head>
 <body class="body-styles">
     {{-- Conteneur global --}}
@@ -49,13 +49,15 @@
                     @auth
 
                     <li><a href="{{ route('home') }}" class="nav-link">Mon compte</a></li>
-                    <li><a href="{{ route('history') }}" class="nav-link">Historiques</a></li>
 
                     @if(Auth::user()->isEditeur() || Auth::user()->isResponsable())
                     <li><a href="{{ route('admin.articles.index') }}" class="nav-link">Gestion des articles</a></li>
                     <li><a href="{{ route('admin.utilisateurs.index') }}" class="nav-link">Gestion des utilisateurs</a></li>
                     <li><a href="{{ route('admin.statistiques.index') }}" class="nav-link">Statistques</a></li>
+                    @else
+                    <li><a href="{{ route('admin.articles.index') }}" class="nav-link">Proposer un articles</a></li>
                     @endif
+                    <li><a href="{{ route('history') }}" class="nav-link">Historiques</a></li>
                     <li><a href="{{ route('deconnexion') }}" class="nav-link" data-logout>Déconnexion</a></li>
                     <form action="{{ route('deconnexion') }}" method="post" class="form-logout">
                         @csrf

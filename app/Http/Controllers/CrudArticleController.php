@@ -19,12 +19,7 @@ class CrudArticleController extends BaseController
     public function __construct()
     {
         
-        $this->middleware(['auth', function ($request, $next) {
-            if (Auth::user()->isResponsable() || Auth::user()->isEditeur()) {
-                return $next($request);
-            }
-            return redirect()->route('home');
-        }]);
+        $this->middleware('auth');
     }
 
     /**
@@ -34,7 +29,7 @@ class CrudArticleController extends BaseController
     {
         $user = Auth::user();
         $query = Article::with(['theme', 'numero', 'statut']);
-        
+
         // Si l'utilisateur est responsable, on affiche uniquement les articles de son thème
         if ($user->isResponsable()) { 
             $query->whereHas('theme', function($q) use ($user) { 
@@ -94,6 +89,8 @@ class CrudArticleController extends BaseController
 
     protected function save(array $data, Article $article = null): RedirectResponse
     {
+        $user = Auth::user();
+
         if (isset($data['image'])) {
             if (isset($article->image)) {
                 Storage::delete($article->image);
@@ -109,8 +106,12 @@ class CrudArticleController extends BaseController
             $data['statut_id'] = $data['statut_id'];
         }
 
-        if (!isset($data['statut_id'])) {
+        if (($user->isResponsable() || $user->isEditeur()) && !isset($data['statut_id'])) {
             $data['statut_id'] = 3; // publie par défaut
+        }
+
+        if ($user->isAbonne()  && !isset($data['statut_id'])) {
+            $data['statut_id'] = 2; // en cours par défaut
         }
 
         // Si vous avez un numéro_id, l'ajouter directement
@@ -122,7 +123,7 @@ class CrudArticleController extends BaseController
 
         return redirect()
             ->route('articles.show', ['article' => $article])
-            ->withStatus($article->wasRecentlyCreated ? 'Article publié avec succès' : 'Article mis à jour avec succès');
+            ->withStatus($article->wasRecentlyCreated ? ($user->isAbonne() ? 'Article en cours de traitement par les responsables' : 'Article publié avec succès') : 'Article mis à jour avec succès');
     }
 
     /**

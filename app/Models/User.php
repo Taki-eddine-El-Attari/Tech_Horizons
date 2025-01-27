@@ -24,7 +24,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'theme_id',
     ];
 
     /**
@@ -66,12 +65,16 @@ class User extends Authenticatable
         return $this->role === Role::Abonne;
     }
 
+    public function themes()
+    {
+        return $this->belongsToMany(Theme::class, 'theme_user');
+    }
+
     public function browsingHistories()
     {
         return $this->hasMany(BrowsingHistory::class);
     }
 
-    // Ajout de la relation avec Theme
     public function theme()
     {
         return $this->belongsTo(Theme::class);
