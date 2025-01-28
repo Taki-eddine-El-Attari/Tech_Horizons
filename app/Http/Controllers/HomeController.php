@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Theme;
-use App\Models\BrowsingHistory;
+use App\Models\Historique;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -79,7 +79,7 @@ class HomeController extends BaseController
 
     public function history(Request $request): View
     {
-        $histories = BrowsingHistory::where('user_id', Auth::id())
+        $histories = Historique::where('user_id', Auth::id())
             ->with(['article.theme'])
             ->filter(request(['search', 'theme', 'date']))
             ->latest('viewed_at')
@@ -91,7 +91,7 @@ class HomeController extends BaseController
         return view('Historique.index', compact('histories', 'themes'));
     }
 
-    public function destroyHistory(BrowsingHistory $history): RedirectResponse
+    public function destroyHistory(Historique $history): RedirectResponse
     {
         if ($history->user_id !== Auth::id()) {
             abort(403);

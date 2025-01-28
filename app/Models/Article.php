@@ -93,7 +93,6 @@ class Article extends Model
 
     public function calculateAverageRating()
     {
-        // Utiliser la relation directement sans ()
         $comments = $this->commentaire;
         
         if ($comments->isEmpty()) {

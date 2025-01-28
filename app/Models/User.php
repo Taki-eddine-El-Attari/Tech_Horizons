@@ -68,12 +68,12 @@ class User extends Authenticatable
 
     public function themes()
     {
-        return $this->belongsToMany(Theme::class, 'theme_user');
+        return $this->belongsToMany(Theme::class, 'abonnements');
     }
 
     public function browsingHistories()
     {
-        return $this->hasMany(BrowsingHistory::class);
+        return $this->hasMany(Historique::class);
     }
 
     public function theme()

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->text('contenu');
             $table->string('image');
             $table->string('couleur')->default('#4f46e5');
-            $table->float('notes', 2, 1)->default(0); // 2 chiffres avant la virgule, 1 chiffre après
             $table->timestamps();
         });
     }

@@ -28,7 +28,6 @@ class ArticleFactory extends Factory
             'extrait' => Str::limit($contenu, 150),
             'image' => fake()->imageUrl,
             'couleur' => fake()->safeHexColor,
-            'notes' => fake()->randomFloat(1, 3.0, 5.0),
             'created_at' => $created_at,
             'updated_at' => $created_at,
         ];
