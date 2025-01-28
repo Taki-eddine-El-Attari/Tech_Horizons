@@ -126,6 +126,8 @@
     cursor: pointer;
     color: #6B7280;
     transition: color 0.2s;
+    margin-top: 30px;
+
 }
 
 .delete-button:hover {

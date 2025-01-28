@@ -18,7 +18,7 @@ class ThemeSeeder extends Seeder
      */
     public function run(): void
     {
-        $themes = collect(['Intelligence artificielle', 'Internet des objets', 'Cybersécurité', 'Réalité virtuelle']);
+        $themes = collect(['Intelligence artificielle', 'Internet des objets', 'Cybersécurité', 'Réalité virtuelle' ,'Blockchain']);
         $themes->each(function ($theme) {
 
             $slug = Str::slug($theme);

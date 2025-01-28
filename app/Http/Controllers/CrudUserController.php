@@ -28,12 +28,16 @@ class CrudUserController extends BaseController
 
     public function index()
     {
-        return view(
-            'admin.utilisateurs.index',
-            [
-                'users' => User::without('password')->orderBy('created_at', 'desc')->get(),
-            ]
-        );
+        $query = User::without('password')->orderBy('created_at', 'desc');
+        
+        // Si l'utilisateur connecté est un responsable, on ne montre que les abonnés
+        if (Auth::user()->isResponsable()) {
+            $query->where('role', Role::Abonne->value);
+        }
+
+        return view('admin.utilisateurs.index', [
+            'users' => $query->get()
+        ]);
     }
 
     public function create()
@@ -70,14 +74,12 @@ class CrudUserController extends BaseController
 
     public function save(array $data, User $user = null): RedirectResponse
     {
-        // Gestion du theme_id en fonction du rôle
-        if ($data['role'] === Role::Responsable->value) {
-            if (!isset($data['theme_id']) || is_null($data['theme_id'])) {
-                // Si aucun thème n'est sélectionné, en prendre un au hasard
-                $theme = Theme::inRandomOrder()->first();
-                $data['theme_id'] = $theme ? $theme->id : null;
-            }
-        } else {
+        // Gestion du theme_id
+        if (isset($data['theme_id']) && !empty($data['theme_id'])) {
+            // Si un thème est sélectionné, on le garde
+            $data['theme_id'] = $data['theme_id'];
+        }else {
+            // Pour les autres rôles sans thème sélectionné
             $data['theme_id'] = null;
         }
 

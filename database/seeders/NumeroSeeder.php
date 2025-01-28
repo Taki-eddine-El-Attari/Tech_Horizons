@@ -15,7 +15,7 @@ class NumeroSeeder extends Seeder
      */
     public function run(): void
     {
-        $numeros = collect(['1', '2', '3']);
+        $numeros = collect(['1', '2', '3','4','5']);
         $numeros->each(function ($numero) {
             if (!Numero::where('numero', $numero)->exists()) {
                 Numero::create([

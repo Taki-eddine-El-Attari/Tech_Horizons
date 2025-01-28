@@ -46,6 +46,10 @@
                         <p class="statistiques-section-item-value">{{ $articles->where('theme_id', 4)->count() }}</p>
                     </div>
                     <div class="statistiques-section-item">
+                        <h3 class="statistiques-section-item-title">Nombre d'articles pour Blockchain</h3>
+                        <p class="statistiques-section-item-value">{{ $articles->where('theme_id', 5)->count() }}</p>
+                    </div>
+                    <div class="statistiques-section-item">
                         <h3 class="statistiques-section-item-title">Nombre de themes</h3>
                         <p class="statistiques-section-item-value">{{ $themes->count() }}</p>
                     </div>
@@ -65,6 +69,14 @@
                     <div class="statistiques-section-item">
                         <h3 class="statistiques-section-item-title">Articles de numéro 3</h3>
                         <p class="statistiques-section-item-value">{{ $articles->where('numero_id', 3)->count() }}</p>
+                    </div>
+                    <div class="statistiques-section-item">
+                        <h3 class="statistiques-section-item-title">Articles de numéro 4</h3>
+                        <p class="statistiques-section-item-value">{{ $articles->where('numero_id', 4)->count() }}</p>
+                    </div>
+                    <div class="statistiques-section-item">
+                        <h3 class="statistiques-section-item-title">Articles de numéro 5</h3>
+                        <p class="statistiques-section-item-value">{{ $articles->where('numero_id', 5)->count() }}</p>
                     </div>
                     <div class="statistiques-section-item">
                         <h3 class="statistiques-section-item-title">Nombre de numéros</h3>

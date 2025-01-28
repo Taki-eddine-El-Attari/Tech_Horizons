@@ -23,7 +23,7 @@
                 <x-select 
                     label="Theme" 
                     name="theme_id" 
-                    :value="old('theme_id', $user->theme?->name)"
+                    :value="old('theme_id', $user->theme_id)"
                     :list="$themes"
                 ></x-select>
 

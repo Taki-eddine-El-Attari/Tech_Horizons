@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             StatutSeeder::class,
         ]);
 
-        User::factory(7)->create();
+        User::factory(8)->create();
         
         // Créer un utilisateur pour les tests
         if (!User::where('email', 'test@example.com')->exists()) {

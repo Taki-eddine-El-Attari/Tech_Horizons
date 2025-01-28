@@ -8,7 +8,7 @@
             <a href="{{ route('admin.utilisateurs.create') }}" class="btn-primary">Créer un utilisateur</a>
         </div>
     </div>
-
+    
     <div class="table-container">
         <table class="admin-table">
             <thead>
