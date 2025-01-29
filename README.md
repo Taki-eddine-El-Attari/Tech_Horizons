@@ -1,6 +1,6 @@
 # Tech Horizons
 
-Tech Horizons est une plateforme numérique innovante dédiée à l’exploration des dernières avancées technologiques : intelligence artificielle, Internet des objets, cybersécurité, blockchain et bien plus encore. Conçu comme un magazine en ligne interactif, il permet aux utilisateurs de découvrir, partager et approfondir leurs connaissances sur les tendances qui façonnent le futur.
+Tech Horizons est une plateforme numérique innovante dédiée à l’exploration des dernières avancées technologiques comme l'intelligence artificielle, Internet des objets, cybersécurité, blockchain et bien plus encore. Conçu comme un magazine en ligne interactif, il permet aux utilisateurs de découvrir, partager et approfondir leurs connaissances sur les tendances qui façonnent le futur.
 
 ---
 
