@@ -7,18 +7,19 @@
     <link rel="icon" href="{{ asset('/images/logos/logo.png') }}">
     <title>{{ $titre }}</title> {{-- Récupère le nom de l'application dans le fichier .env --}}
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/css/show.css' , 'resources/js/historiques.js', 'resources/js/index.js' , 'resources/js/show.js'])
+    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/css/show.css' , 
+    'resources/js/historiques.js', 'resources/js/index.js' , 'resources/js/show.js'])
 </head>
 <body class="body-styles">
-    {{-- Conteneur global --}}
+    {{-- Structure principale du site --}}
     <div class="container">
-        {{-- Header --}}
+        {{-- En-tête du site avec navigation --}}
         <header class="header">
             {{-- Logo --}}
             <a href="{{ route('indexinvite') }}">
                 <img src="{{ asset('/images/logos/tech_horizons.jpg') }}" alt="Tech Horizons Logo" class="logo">
             </a>
-            {{-- Formulaire de recherche --}}
+            {{-- Barre de recherche --}}
             <form action="{{ route('index') }}" class="search-form">
                 <input id="search" value="{{ request()->search }}" class="search-input" type="search" name="search" placeholder="Rechercher quelque chose...">
                 <button>
@@ -27,12 +28,13 @@
                     </svg>
                 </button>
             </form>
-            {{-- Navigation --}}
-
+            {{-- Menu de navigation principal --}}
             <nav class="nav">
+                {{-- Affichage du nom de l'utilisateur si connecté --}}
                 @auth
                 <span class="user-name">{{ Auth::user()->name }}</span>
                 @endauth
+                {{-- Bouton du menu avec icône différente selon connexion --}}
                 <button class="nav-button {{ auth()->guest() ? 'nav-button-guest' : '' }}">
                     @auth
                     <img class="profile-image" src="{{ Gravatar::get(Auth::user()->email) }}" alt="Image de profil">
@@ -45,7 +47,9 @@
                     @endauth
 
                 </button>
+                {{-- Menu déroulant avec options de navigation --}}
                 <ul class="nav-menu {{ auth()->guest() ? 'nav-menu-guest' : '' }}" tabindex="-1">
+                    {{-- Options pour utilisateurs connectés --}}
                     @auth
 
                     <li><a href="{{ route('home') }}" class="nav-link">Mon compte</a></li>
@@ -64,7 +68,7 @@
                     </form>
 
                     @else
-
+                    {{-- Options pour visiteurs --}}
                     <li><a href="{{ route('connexion') }}" class="nav-link">Connexion</a></li>
                     <li><a href="{{ route('inscription') }}" class="nav-link-inscription">Inscription</a></li>
 
@@ -72,6 +76,7 @@
 
                 </ul>
 
+                {{-- Menu desktop pour visiteurs --}}
                 @guest
 
                 <ul class="nav-menu-desktop">
@@ -91,6 +96,7 @@
             </nav>
         </header>
 
+        {{-- Messages de notification --}}
         @if(session('status'))
         <div class="success-alert">
             <div class="alert-container">
@@ -111,6 +117,7 @@
         </div>
         @endif
 
+        {{-- Contenu principal de la page --}}
         <main class="main-content">
             {{ $slot }}
         </main>

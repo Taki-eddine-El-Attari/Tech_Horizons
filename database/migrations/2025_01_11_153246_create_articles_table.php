@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('articles'); // Ajouter cette ligne
+        Schema::dropIfExists('articles');
         
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
             $table->string('slug')->unique();
-            $table->string('extrait');
+            $table->text('extrait');  // Changé de string à text
             $table->text('contenu');
             $table->string('image');
-            $table->string('couleur')->default('#4f46e5');
             $table->timestamps();
         });
     }

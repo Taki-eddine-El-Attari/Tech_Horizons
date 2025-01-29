@@ -343,6 +343,15 @@ body {
     font-weight: 600;
     text-decoration: none;
 }
+.theme-category-2 {
+    font-size: 1.5rem;
+    color: #4f46e5;
+    margin-bottom: -17px;
+    margin-top: -2px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
 
 .post-number {
     color: #24232a;
@@ -429,12 +438,13 @@ body {
 .theme-description{
     font-size: 1rem;
     color: #64748b;
-    line-height: 1.4; 
-    margin-bottom: 20px; 
-    white-space: normal;        /* Force le retour à la ligne normal */
-    overflow-wrap: break-word;  /* Coupe les mots longs */
-    width: 100%;               /* Utilise toute la largeur disponible */
-    display: block;            /* Affiche en bloc */
+    line-height: 1.4;
+    padding: 0; 
+    padding-top: -20px;
+    white-space: normal;        
+    overflow-wrap: break-word;  
+    width: 100%;               
+    display: block;            
 }
 
 .post-read-more {

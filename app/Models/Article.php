@@ -64,7 +64,7 @@ class Article extends Model
         return $this->belongsTo(Statut::class);
     }
 
-    public function commentaire():HasMany
+    public function commentaire(): HasMany
     {
         return $this->hasMany(Commentaire::class)->orderByDesc('created_at');
     }
@@ -74,7 +74,7 @@ class Article extends Model
         return (bool) $this->id;
     }
 
-    public function commentaires(Article $article, Request $request): RedirectResponse
+    public function addCommentaire(Article $article, Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'commentaire' => ['required', 'string', 'min:2', 'max:255'],
