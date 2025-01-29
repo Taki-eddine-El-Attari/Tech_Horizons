@@ -27,7 +27,13 @@ L’application propose une navigation intuitive et adaptée à quatre profils d
 
 ---
 
+## 🎨 Technologies utilisées
 
+- 🛠 Laravel / Framework PHP moderne
+- 🛠 MySQL / Base de données relationnelle
+- 🛠 CSS et Javascript / les styles et les scripts
+
+---
 
 ## 📌 Prérequis
 
@@ -89,14 +95,6 @@ php artisan serve
 ```
 
 Votre application est maintenant accessible sur http://localhost:8000 ! 🎉
-
----
-
-## 🎨 Technologies utilisées
-
-- 🛠 Laravel / Framework PHP moderne
-- 🛠 MySQL / Base de données relationnelle
-- 🛠 CSS et Javascript / les styles et les scripts
 
 ---
 
