@@ -106,6 +106,6 @@ Votre application est maintenant accessible sur http://localhost:8000 ! 🎉
     - Taki eddine El attari
     - Fatima Ezzahra Chayeb
     - Rabab Ziti
-- **Encadrants **:
+- **Encadrants**:
     - Prof. M’hamed AIT KBIR
     - Prof. Yasyn EL YUSUFI
