@@ -2,12 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Statut;
 use App\Models\User;
-use App\Models\Responsable;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 
 
@@ -25,7 +21,7 @@ class DatabaseSeeder extends Seeder
             StatutSeeder::class,
         ]);
 
-        User::factory(8)->create();
+        User::factory(10)->create();
         
         // Créer un utilisateur pour les tests
         if (!User::where('email', 'test@example.com')->exists()) {

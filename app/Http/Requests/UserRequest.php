@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule as Rule;
 use App\Enumérations\Role;
 

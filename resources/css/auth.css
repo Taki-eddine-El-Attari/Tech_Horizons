@@ -6,6 +6,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(-45deg, #6646e5, #4f46e5, #5249ff, #4683e5);
+	background-size: 400% 400%;
+	animation: animate 7s infinite alternate;
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
 }
 
 .container {
@@ -25,19 +37,7 @@ body {
   padding-bottom: 0.1rem;
 }
 
-.logo {
-  width: 60px;
-  height: 60px;
-  color: #4f46e5;
-  position: absolute;
-  top: -65px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
-.logo:hover {
-  color: #4338ca;
-}
 
 .icon {
   width: 64px;

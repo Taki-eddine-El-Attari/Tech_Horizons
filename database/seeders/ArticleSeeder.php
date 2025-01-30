@@ -29,8 +29,10 @@ class ArticleSeeder extends Seeder
 
                 'image' => 'Images Articles/IA1.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
-                'statut_id' => 2,
-                'numero_id' => 1
+                'statut_id' => 3,
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’Internet des objets dans l’agriculture',
@@ -44,7 +46,9 @@ class ArticleSeeder extends Seeder
                 'image' => 'Images Articles/IOT1.jpg',
                 'theme_id' => Theme::where('name', 'Internet des objets')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 3,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La réalité augmentée dans le commerce',
@@ -58,10 +62,12 @@ L’une des applications les plus populaires de la RA dans le commerce est l’e
 Amélioration de la navigation en magasin
 Les détaillants utilisent également la RA pour améliorer la navigation dans leurs magasins. Par exemple, des applications mobiles peuvent guider les clients vers les rayons où se trouvent les produits qu’ils recherchent, ou encore afficher des informations détaillées sur les articles via la caméra de leur téléphone. Cela crée une expérience d’achat plus fluide et interactive.",
 
-                'image' => 'Images Articles/realite1.jpg',
+                'image' => 'Images Articles/realite7.jpg',
                 'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
-                'statut_id' => 1,
-                'numero_id' => 1
+                'statut_id' => 3,
+                'numero_id' => 5,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’avenir de la réalité virtuelle et augmentée dans les entreprises',
@@ -78,7 +84,9 @@ La réalité virtuelle et augmentée facilite la collaboration à distance en of
                 'image' => 'Images Articles/realite2.jpg',
                 'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’intelligence artificielle et la santé mentale',
@@ -95,7 +103,9 @@ Les chatbots et autres outils basés sur l’IA sont utilisés pour fournir un s
                 'image' => 'Images Articles/IA2.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’intelligence artificielle au service de la sécurité des données',
@@ -114,8 +124,10 @@ L’IA n’est pas seulement utilisée pour défendre les systèmes, mais aussi 
 
                 'image' => 'Images Articles/IA3.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 1
+                'statut_id' => 2,
+                'numero_id' => 5,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’importance de l’intelligence artificielle dans la gestion des entreprises',
@@ -129,7 +141,9 @@ L’utilisation de l’IA dans la gestion de la relation client, à travers des 
                 'image' => 'Images Articles/IA7.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Blockchain et l’énergie',
@@ -145,8 +159,10 @@ Les entreprises et les gouvernements peuvent utiliser la blockchain pour suivre 
 
                 'image' => 'Images Articles/block1.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 1
+                'statut_id' => 1,
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Blockchain et gestion des identités numériques',
@@ -163,7 +179,9 @@ En utilisant la blockchain pour la gestion des identités, les entreprises peuve
                 'image' => 'Images Articles/block2.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 5,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Les défis de la gestion des risques dans l’Internet des objets',
@@ -179,8 +197,10 @@ La gestion des risques IoT nécessite une évaluation continue des vulnérabilit
 
                 'image' => 'Images Articles/IOT2.jpg',
                 'theme_id' => Theme::where('name', 'Internet des objets')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 3
+                'statut_id' => 2,
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La gestion des données dans l’Internet des objets',
@@ -197,7 +217,9 @@ Le chiffrement des données est une mesure fondamentale pour garantir leur sécu
                 'image' => 'Images Articles/IOT3.jpg',
                 'theme_id' => Theme::where('name', 'Internet des objets')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’importance de la gestion des risques en cybersécurité',
@@ -214,7 +236,9 @@ Une fois les risques identifiés, il est crucial de mettre en place des stratég
                 'image' => 'Images Articles/cyber1.jpg',
                 'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’importance de la formation en cybersécurité pour tous les utilisateurs',
@@ -230,8 +254,10 @@ L'une des clés pour améliorer la cybersécurité réside dans la formation des
 
                 'image' => 'Images Articles/cyber2.jpg',
                 'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 3
+                'statut_id' => 2,
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Blockchain et les cryptomonnaies',
@@ -246,7 +272,9 @@ Néanmoins, la blockchain et les cryptomonnaies posent encore des défis, notamm
                 'image' => 'Images Articles/block3.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Blockchain et la gestion des contrats intelligents',
@@ -260,8 +288,10 @@ Toutefois, malgré les avantages indéniables des contrats intelligents, leur ad
 
                 'image' => 'Images Articles/block4.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 1
+                'statut_id' => 2,
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La révolution technologique avec la blockchain',
@@ -276,7 +306,9 @@ Cependant, malgré son potentiel immense, la blockchain rencontre des obstacles,
                 'image' => 'Images Articles/block5.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La blockchain : un changement de paradigme pour la gestion des données',
@@ -291,7 +323,9 @@ Malgré ses nombreux avantages, la blockchain présente aussi des défis, notamm
                 'image' => 'Images Articles/block6.jpg',
                 'theme_id' => Theme::where('name', 'Blockchain')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’avenir de la réalité virtuelle et augmentée dans les entreprises',
@@ -306,7 +340,9 @@ Cependant, la mise en œuvre de ces technologies présente des défis. Le coût 
                 'image' => 'Images Articles/realite3.jpg',
                 'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La révolution des technologies immersives',
@@ -321,7 +357,9 @@ Malgré leur potentiel, ces technologies font face à des défis, notamment en t
                 'image' => 'Images Articles/realite4.jpg',
                 'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 3,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’impact de la réalité virtuelle et augmentée',
@@ -335,8 +373,10 @@ Cependant, l’adoption de la RV et de la RA soulève aussi des défis. Les coû
 
                 'image' => 'Images Articles/realite5.jpg',
                 'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 1
+                'statut_id' => 2,
+                'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’évolution de la cybersécurité face aux nouvelles menaces',
@@ -350,8 +390,10 @@ Enfin, la cybersécurité doit être adaptée aux nouveaux défis posés par des
 
                 'image' => 'Images Articles/cyber3.jpg',
                 'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 3
+                'statut_id' => 1,
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Les défis de la cybersécurité dans un monde connecté',
@@ -366,7 +408,9 @@ Les objets connectés (IoT) ajoutent une couche supplémentaire de vulnérabilit
                 'image' => 'Images Articles/cyber4.jpg',
                 'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 2,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La protection des données face aux cyberattaques',
@@ -381,7 +425,9 @@ Malgré ces efforts, la protection des données reste un défi constant. Les gou
                 'image' => 'Images Articles/cyber5.jpg',
                 'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 5,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’impact de l’Internet des objets sur notre quotidien',
@@ -394,7 +440,9 @@ Cependant, l'IoT présente des défis, notamment en matière de sécurité des d
                 'image' => 'Images Articles/IOT4.jpg',
                 'theme_id' => Theme::where('name', 'Internet des objets')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 3
+                'numero_id' => 5,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'La révolution technologique de l’Internet des Objets',
@@ -408,8 +456,10 @@ Pour tirer pleinement parti des avantages de l’IoT tout en limitant ses risque
 
                 'image' => 'Images Articles/IOT5.jpg',
                 'theme_id' => Theme::where('name', 'Internet des objets')->first()->id,
-                'statut_id' => 3,
-                'numero_id' => 3
+                'statut_id' => 2,
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => ' L’intelligence artificielle et l’avenir du travail',
@@ -424,7 +474,9 @@ Toutefois, l'intégration de l'IA dans le monde du travail soulève également d
                 'image' => 'Images Articles/IA5.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 3,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'Les applications et enjeux de l’intelligence artificielle',
@@ -441,7 +493,9 @@ Cependant, le développement de l’IA n’est pas exempt de défis. Les questio
                 'image' => 'Images Articles/IA6.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
                 'statut_id' => 3,
-                'numero_id' => 1
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             [
                 'titre' => 'L’avenir de l’intelligence artificielle dans la santé',
@@ -457,8 +511,67 @@ L’IA permet une approche plus personnalisée des traitements médicaux. En ana
 
                 'image' => 'Images Articles/IA9.jpg',
                 'theme_id' => Theme::where('name', 'Intelligence artificielle')->first()->id,
+                'statut_id' => 2,
+                'numero_id' => 3,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+            ],
+            [
+                'titre' => 'L’importance du chiffrement dans la cybersécurité',
+                'slug' => Str::slug('L’importance du chiffrement dans la cybersécurité'),
+                'extrait' => 'Le chiffrement des données est une mesure essentielle pour protéger les informations sensibles contre les cyberattaques. Que ce soit pour sécuriser les communications en ligne, les transactions financières ou les données personnelles...',
+                'contenu' => "Le chiffrement des données est une mesure essentielle pour protéger les informations sensibles contre les cyberattaques. Que ce soit pour sécuriser les communications en ligne, les transactions financières ou les données personnelles, le chiffrement joue un rôle crucial dans la protection de la confidentialité et de l'intégrité des informations. À mesure que les menaces deviennent plus sophistiquées, l'importance de cette technique de sécurité ne cesse de croître.
+
+Le chiffrement des données : un principe fondamental de sécurité
+Le chiffrement consiste à convertir des informations lisibles en un format illisible, ne pouvant être déchiffré qu’avec une clé spéciale. Cette technologie est largement utilisée pour protéger les données en transit, telles que celles envoyées par email ou sur internet, mais aussi pour sécuriser les données stockées sur des serveurs ou des appareils mobiles. Le chiffrement permet ainsi d’assurer que même si les données sont interceptées, elles resteront protégées contre toute utilisation malveillante.
+
+Les défis du chiffrement dans un environnement de plus en plus connecté
+Avec la multiplication des appareils connectés et l’adoption de l’Internet des objets (IoT), le chiffrement devient un défi de taille. Les données circulent désormais sur une multitude de réseaux, et les dispositifs de l'IoT, souvent vulnérables, sont de plus en plus utilisés comme points d’entrée pour les cyberattaques. De plus, le chiffrement nécessite des ressources importantes pour être correctement mis en œuvre, ce qui peut poser des problèmes de performance pour les entreprises qui traitent de grandes quantités de données. Les entreprises doivent donc adopter des solutions de chiffrement évolutives et adaptées à leur infrastructure.",
+
+                'image' => 'Images Articles/cyber6.jpg',
+                'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
+                'statut_id' => 2,
+                'numero_id' => 3,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+            ],
+            [
+                'titre' => 'La gestion des vulnérabilités en cybersécurité',
+                'slug' => Str::slug('La gestion des vulnérabilités en cybersécurité'),
+                'extrait' => 'La gestion des vulnérabilités est un aspect essentiel de la cybersécurité. Les vulnérabilités dans les systèmes informatiques peuvent offrir aux cybercriminels des points d’entrée pour exécuter des attaques...',
+                'contenu' => "La gestion des vulnérabilités est un aspect essentiel de la cybersécurité. Les vulnérabilités dans les systèmes informatiques peuvent offrir aux cybercriminels des points d'entrée pour exécuter des attaques. Identifier ces vulnérabilités de manière proactive et les corriger rapidement est crucial pour éviter les intrusions, les pertes de données ou la compromission des systèmes. Une stratégie efficace de gestion des vulnérabilités repose sur des outils de détection, des processus de correction rigoureux et une surveillance continue.
+
+Identifier les vulnérabilités : un processus clé pour la cybersécurité
+L’identification des vulnérabilités est la première étape de toute stratégie de gestion des risques en cybersécurité. Cela inclut l’utilisation d’outils d’analyse automatique comme les scanners de vulnérabilités qui permettent de détecter les failles de sécurité dans les systèmes, applications et réseaux. Les tests de pénétration (ou pentests) réalisés par des experts en sécurité permettent également de simuler des attaques afin d’identifier les points faibles avant que des cybercriminels ne les exploitent. Une fois ces vulnérabilités détectées, il est essentiel d’attribuer une priorité aux correctifs à appliquer en fonction de leur criticité.
+
+Corriger et atténuer les risques liés aux vulnérabilités
+Une fois identifiées, les vulnérabilités doivent être rapidement corrigées pour éviter qu’elles ne soient exploitées. La mise à jour régulière des logiciels et systèmes d’exploitation, ainsi que l'application de correctifs de sécurité, est une méthode de base pour réduire les risques. En parallèle, les organisations doivent s’assurer que leurs configurations système sont sécurisées, notamment en désactivant les services non nécessaires ou en appliquant des configurations de sécurité strictes. Dans certains cas, des solutions d'atténuation peuvent être mises en place temporairement, comme l’utilisation de firewalls ou la segmentation du réseau pour limiter l'impact d'une vulnérabilité en attendant qu'un correctif soit déployé.",
+
+                'image' => 'Images Articles/cyber7.jpg',
+                'theme_id' => Theme::where('name', 'Cybersécurité')->first()->id,
+                'statut_id' => 3,
+                'numero_id' => 4,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+            ],
+            [
+                'titre' => 'Les avantages de la réalité virtuelle dans l’apprentissage',
+                'slug' => Str::slug('Les avantages de la réalité virtuelle dans l’apprentissage'),
+                'extrait' => 'La réalité virtuelle (VR) est une technologie révolutionnaire qui transforme la manière dont nous apprenons et interagissons avec des concepts complexes...',
+                'contenu' => "La réalité virtuelle (VR) est une technologie révolutionnaire qui transforme la manière dont nous apprenons et interagissons avec des concepts complexes. En offrant des expériences immersives, elle permet aux utilisateurs de vivre des scénarios pratiques dans des environnements simulés, renforçant ainsi la compréhension et la rétention des informations. Que ce soit pour former des chirurgiens, enseigner des langues étrangères ou simuler des situations professionnelles, la VR joue un rôle crucial dans l’éducation moderne. 
+
+La réalité virtuelle : un outil pédagogique puissant 
+La VR consiste à plonger l'utilisateur dans un monde numérique interactif, où il peut explorer et interagir avec des objets et des situations comme s'il y était réellement. Cette technologie est largement utilisée pour créer des simulations éducatives, telles que des visites historiques, des laboratoires scientifiques virtuels ou des environnements professionnels. La capacité de la VR à rendre l'apprentissage plus engageant et dynamique en fait un outil précieux pour les éducateurs cherchant à améliorer l'expérience d'apprentissage. 
+
+Les défis de l’intégration de la VR dans l’éducation 
+Bien que la VR présente des avantages significatifs, son intégration dans les systèmes éducatifs traditionnels pose certains défis. Premièrement, l'équipement nécessaire pour les casques VR et les ordinateurs compatibles peut être coûteux, limitant son adoption généralisée dans les écoles et universités. Deuxièmement, la création de contenu éducatif de haute qualité nécessite des compétences techniques spécialisées, ce qui peut constituer un obstacle pour certains enseignants. Enfin, il est essentiel de garantir que l'utilisation de la VR ne remplace pas les interactions humaines importantes entre enseignants et élèves, mais plutôt qu'elle les complémente. ",
+
+                'image' => 'Images Articles/realite6.jpg',
+                'theme_id' => Theme::where('name', 'Réalité virtuelle')->first()->id,
                 'statut_id' => 3,
                 'numero_id' => 1,
+                'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
             ],
             
 
@@ -474,7 +587,17 @@ L’IA permet une approche plus personnalisée des traitements médicaux. En ana
             "C'est fascinant de voir l'évolution de cette technologie.",
             "Merci pour ces explications détaillées.",
             "Un article qui donne matière à réflexion.",
-            "Je partage entièrement cette analyse."
+            "Je partage entièrement cette analyse.",
+            "Un point de vue très pertinent sur le sujet.",
+            "J'ai trouvé cet article très instructif.",
+            "Merci pour cet éclairage sur un sujet complexe.",
+            "Une lecture captivante du début à la fin.",
+            "Cet article m'a vraiment ouvert les yeux.",
+            "Des informations très utiles et bien présentées.",
+            "Je recommande vivement cet article à mes collègues.",
+            "Une analyse très approfondie et bien argumentée.",
+            "Bravo pour cet excellent travail de recherche.",
+            "Un article qui mérite d'être partagé largement."
         ];
 
         foreach ($articles as $articleData) {
@@ -489,8 +612,8 @@ L’IA permet une approche plus personnalisée des traitements médicaux. En ana
                         'user_id' => $users->random()->id,
                         'contenu' => $commentaires[array_rand($commentaires)],
                         'note' => rand(3, 5), // Note aléatoire entre 3 et 5
-                        'created_at' => now(),
-                        'updated_at' => now(),
+                        'created_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
+                        'updated_at' => now()->subDays(rand(1, 365))->subMinutes(rand(0, 1440)),
                     ]);
                 }
             }
