@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-submit-button">{{ $article->exists ? 'Modifier' : 'Publier' }}</button>
+                <button type="submit" class="btn">{{ $article->exists ? 'Modifier' : 'Publier' }}</button>
             </div>
         </div>
     </form>

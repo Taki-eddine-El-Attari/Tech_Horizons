@@ -107,6 +107,8 @@ h3 {
 
 .btn-primary:hover {
   background: #1e40af;
+  box-shadow: 1px 1px 5px 5px #3d70fb40;
+
 }
 
 .form-group.d-md-flex {

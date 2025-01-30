@@ -7,8 +7,8 @@
     <link rel="icon" href="{{ asset('/images/logos/logo.png') }}">
     <title>{{ $titre }}</title> {{-- Récupère le nom de l'application dans le fichier .env --}}
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/css/show.css' , 
-    'resources/js/historiques.js', 'resources/js/index.js' , 'resources/js/show.js'])
+    @vite(['resources/css/index.css', 'resources/css/statistiques.css' , 'resources/css/historiques.css' , 'resources/css/show.css' , 'resources/css/bouton_anim.css',
+    'resources/js/historiques.js', 'resources/js/index.js' , 'resources/js/show.js', 'resources/js/statistiques.js'])
 </head>
 <body class="body-styles">
     {{-- Structure principale du site --}}

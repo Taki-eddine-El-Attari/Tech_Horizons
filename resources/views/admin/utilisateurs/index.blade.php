@@ -4,20 +4,18 @@
             <h1>Utilisateurs</h1>
             <p>Interface d'administration des utilisateurs.</p>
         </div>
-        <div class="admin-header-actions">
-            <a href="{{ route('admin.utilisateurs.create') }}" class="btn-primary">Créer un utilisateur</a>
-        </div>
+        <button class="btn" onclick="window.location.href='{{ route('admin.utilisateurs.create') }}'">Créer un utilisateur</button>
     </div>
-    
+
     <div class="table-container">
         <table class="admin-table">
             <thead>
                 <tr>
                     <th>Nom et prénom</th>
                     <th>Role</th>
-                    <th>Theme</th> 
-                    <th>Email</th>                                       
-                    <th></th>                   
+                    <th>Theme</th>
+                    <th>Email</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,15 +32,10 @@
                         </a>
                     </td>
                     <td class="text-right">
-                        <a href="#" 
-                           class="link-primary delete-post" 
-                           data-form="delete-form-{{ $user->id }}">
+                        <a href="#" class="link-primary delete-post" data-form="delete-form-{{ $user->id }}">
                             Supprimer
                         </a>
-                        <form id="delete-form-{{ $user->id }}" 
-                              action="{{ route('admin.utilisateurs.destroy', ['Utilisateur' => $user->id]) }}" 
-                              method="POST" 
-                              class="hidden">
+                        <form id="delete-form-{{ $user->id }}" action="{{ route('admin.utilisateurs.destroy', ['Utilisateur' => $user->id]) }}" method="POST" class="hidden">
                             @csrf
                             @method('DELETE')
                         </form>

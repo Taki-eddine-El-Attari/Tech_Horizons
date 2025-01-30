@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-submit-button">{{ $user->exists ? 'Modifier' : 'Ajouter' }}</button>
+                <button type="submit" class="btn">{{ $user->exists ? 'Modifier' : 'Ajouter' }}</button>
             </div>
         </div>
     </form>

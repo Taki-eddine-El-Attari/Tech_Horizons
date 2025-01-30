@@ -12,7 +12,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-submit-button">Modifier mes abonnées</button>
+                <button type="submit" class="btn">Modifier mes abonnées</button>
             </div>
         </div>
     </form>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-submit-button">Modifier mes informations</button>
+                <button type="submit" class="btn">Modifier mes informations</button>
             </div>
 
         </div>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="form-submit-button">Modifier mon mot de passe</button>
+                <button type="submit" class="btn">Modifier mon mot de passe</button>
             </div>
         </div>
     </form>
