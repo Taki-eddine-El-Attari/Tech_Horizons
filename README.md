@@ -73,7 +73,7 @@ php artisan key:generate
 4️⃣ *Dans votre SGBD créer une base de données avec le nom du projet*
 
 ```
-Tech_horizons  #ce nom exactement
+tech_horizons  #ce nom exactement
 ```
 
 5️⃣ *Exécuter les migrations & seeders*
