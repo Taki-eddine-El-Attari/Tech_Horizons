@@ -1,66 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tech Horizons
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Tech Horizons est une plateforme numérique innovante dédiée à l’exploration des dernières avancées technologiques comme l'intelligence artificielle, Internet des objets, cybersécurité, blockchain et bien plus encore. Conçu comme un magazine en ligne interactif, il permet aux utilisateurs de découvrir, partager et approfondir leurs connaissances sur les tendances qui façonnent le futur.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Fonctionnalités
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Authentification & Gestion des utilisateurs 👔**
+   - Différents rôles : Invités, Abonnés, Responsables de thème, Éditeurs.
+   - Système de permissions basé sur les rôles.
+- **Gestion des articles 📝**
+   - CRUD dynamique pour les articles (Création, Lecture, Mise à jour, Suppression).
+- **Modération 🔐**
+   - Modération des conversations et des articles par les responsables de thème et les éditeurs.
+- **Historique de navigation 📃**
+   - Filtrage avancé pour retrouver des articles consultés précédemment.
+- **Statistiques avancées 📊**
+   - Statistiques sur les abonnés, thèmes, articles ...
+- **Interaction communautaire 💬**
+   - Système de notation (1 à 5) pour les articles.
+   - Chat lié aux articles pour discussions et échanges.
+- **Expérience interactive optimisée pour mobile 📱**
+   - Design responsive assurant une navigation fluide sur smartphones et tablettes
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🏆 Expérience utilisateur personnalisée
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+L’application propose une navigation intuitive et adaptée à quatre profils d’utilisateurs :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **👤 Invités** :
+  - Consultation libre des informations sur les thèmes.
+  - Accès aux numéros publics.
+  - Possibilité de déposer une demande d’inscription au magazine.
+- **📖 Abonnés** :
+  - Espace personnalisé pour gérer les abonnements aux thèmes.
+  - Historique de navigation avec filtres.
+  - Proposition d'articles avec suivi de l'état.
+  - Attribution de notes et participation aux discussions (Chat).
+- **✍ Responsables de thème** :
+  - Gestion des abonnements et des articles liés à leur thème.
+  - Validation des propositions d'articles.
+  - Modération des conversations liées aux articles de leur thème.
+  - Consultation des statistiques sur les articles et les abonnés.
+- **🛠 Éditeurs** :
+  - Gestion complète des utilisateurs (ajout, modification, blocage, suppression).
+  - Publication et gestion des numéros (activation/désactivation).
+  - Supervision globale des statistiques.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🎨 Technologies utilisées
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- 🛠 Framework PHP moderne  : Laravel
+- 🛠 Base de données relationnelle  : MySQL
+- 🛠 Styles et scripts personnalisés  : CSS et JavaScript
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 📌 Prérequis
 
-## Contributing
+**Avant de commencer, assurez-vous d'avoir les éléments suivants installés :**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- ✔ PHP ≥ 8.0
+- ✔ Composer
+- ✔ Node.js & npm
+- ✔ MySQL ou un autre SGBD compatible
+- ✔ Laravel (installé globalement ou via Composer)
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🔧 Installation
 
-## Security Vulnerabilities
+1️⃣ *Cloner le dépôt*
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+git clone https://github.com/Taki-eddine-El-Attari/Tech_Horizons.git
+cd Tech_Horizons
+```
 
-## License
+2️⃣ *Installer les dépendances*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+npm install
+```
+
+3️⃣ *Configurer l’environnement*
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+✍ Modifier .env avec vos paramètres de base de données.
+
+4️⃣ *Dans votre SGBD créez une base de données nommée :*
+
+```
+tech_horizons 
+```
+
+5️⃣ *Exécuter les migrations & seeders*
+
+```
+php artisan migrate --seed
+```
+
+6️⃣ *Compiler les assets*
+
+```
+npm run dev
+```
+
+🚀 *Lancer le serveur*
+
+```
+php artisan serve
+```
+
+Votre application est maintenant accessible sur http://localhost:8000 ! 🎉
+
+---
+
+## 🌟 Remerciements
+
+Nous tenons à remercier les membres de l'équipe et les encadrants pour leur soutien et leur contribution à ce projet. 
+
+- **Encadrants**:
+    - Prof. M’hamed AIT KBIR
+    - Prof. Yasyn EL YUSUFI
+
+- **Membres de l'équipe**:
+    - Taki eddine EL ATTARI
+    - Fatima Ezzahra CHAYEB
+    - Rabab ZITI
