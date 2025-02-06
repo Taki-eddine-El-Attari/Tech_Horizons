@@ -3,20 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Statut extends Model
 {
-    use HasFactory;
-
+    // Nom de la table
     protected $table = 'statuts';
+
+    // Champs autorisés pour la créeation et la mise à jour
     protected $fillable = ['name'];
 
+    // Relation one-to-many (1,n) avec les articles
     public function articles()
     {
         return $this->hasMany(Article::class);
     }
 
+    // Utilise le slug comme identifiant dans les URLs
     public function getRouteKeyName(): string
     {
         return 'slug';

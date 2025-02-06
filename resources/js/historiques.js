@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+// Gestion de suppression d'historique
+document.addEventListener('DOMContentLoaded', function() { 
     const modal = document.getElementById('deleteModal');
     const modalBackdrop = document.getElementById('deleteModal-backdrop');
     const cancelButton = document.getElementById('cancelDelete');

@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // crée la table 'commentaires'
     public function up(): void
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
             $table->string("contenu");
             $table->integer('note')->default(0);
-            $table->foreignId('article_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('article_id')->constrained()->cascadeOnDelete(); 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    // supprime la table 'commentaires'
     public function down(): void
     {
         Schema::dropIfExists('commentaires');

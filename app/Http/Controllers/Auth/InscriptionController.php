@@ -18,11 +18,13 @@ class InscriptionController extends BaseController
         $this->middleware('guest');
     }
 
+    // Affiche le formulaire d'inscription
     public function showRegistrationForm(): View
     {
         return view('auth.inscription');
     }
 
+    // Traite la soumission du formulaire d'inscription
     public function inscription(Request $request): RedirectResponse
     {
         $validated = $request->validate([

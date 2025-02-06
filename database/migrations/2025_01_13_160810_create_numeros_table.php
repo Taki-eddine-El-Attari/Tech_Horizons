@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // Crée la table 'numeros'
     public function up(): void
     {
         Schema::create('numeros', function (Blueprint $table) {
@@ -18,13 +16,11 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    // Supprime la table 'numeros'
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('numeros');
-        Schema::enableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints(); // Désactive les contraintes
+        Schema::dropIfExists('numeros'); // Supprime la table
+        Schema::enableForeignKeyConstraints(); // Réactive les contraintes
     }
 };

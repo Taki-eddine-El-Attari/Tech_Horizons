@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // Crée les tables 'users', 'password_reset_tokens' et 'sessions'
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -40,9 +38,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    // Supprimer les tables 'users', 'password_reset_tokens' et 'sessions'
     public function down(): void
     {
         Schema::dropIfExists('users');

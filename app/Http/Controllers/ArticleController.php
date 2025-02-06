@@ -15,21 +15,25 @@ use Illuminate\View\View;
 
 class ArticleController extends BaseController
 {
+    // Initialise le contrôleur
     public function __construct()
     {
         $this->middleware('auth')->only(['commentaire']);
     }
 
+    // Affiche la liste des articles
     public function index(Request $request): View
     {
         return $this->articleView($request->search ? ['search' => $request->search] : []);
     }
 
+    // Affiche les articles d'un thème spécifique
     public function articlebytheme(Theme $theme): View
     {
         return $this->articleView(['theme' => $theme]);
     }
 
+    // Affiche les articles d'un numéro spécifique
     public function articlebynumero($numero, Theme $theme): View
     {
         return view('Acceuil.index', [
@@ -37,15 +41,15 @@ class ArticleController extends BaseController
         ]);
     }
 
+    // Affiche les articles d'un statut spécifique
     public function articlebystatut(Statut $statut): View
     {
         return view('Acceuil.index', [
-            // 'articles' => $statut->articles()->latest()->paginate(10),
-
             'articles' => Article::where('statut_id', $statut->id)->latest()->paginate(10),
         ]);
     }
 
+    // Affiche la liste des articles en fonction des filtres
     protected function articleView(array $filters): View
     {
         $query = Article::filters($filters);
@@ -56,7 +60,7 @@ class ArticleController extends BaseController
 
             // Si l'utilisateur est abonné
             if ($user->isAbonne()) {
-                // Récupérer les theme_ids de l'utilisateur depuis la table pivot
+                // Récupérer les theme_ids de l'utilisateur depuis la table abonnements
                 $userThemeIds = $user->themes()->pluck('themes.id')->toArray();
 
                 if (!empty($userThemeIds)) {
@@ -74,6 +78,7 @@ class ArticleController extends BaseController
         ]);
     }
 
+    // Affiche un article spécifique
     public function show(Article $article): View
     {
         // Si l'utilisateur est connecté, on enregistre l'historique de navigation
@@ -90,6 +95,7 @@ class ArticleController extends BaseController
         ]);
     }
 
+    // Enregistre un commentaire pour un article
     public function commentaire(Article $article, Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -107,6 +113,7 @@ class ArticleController extends BaseController
         return back()->with('status', 'Commentaire publié !');
     }
 
+    // Calcule la note moyenne d'un article
     public function calculateAverageRating(Article $article)
     {
         $comments = Commentaire::where('article_id', $article->id);
@@ -121,6 +128,7 @@ class ArticleController extends BaseController
         return 0; // Retourne 0 s'il n'y a pas de commentaires
     }
 
+    // Supprime un commentaire
     public function destroyComment(Commentaire $commentaire): RedirectResponse
     {
         $user = Auth::user();

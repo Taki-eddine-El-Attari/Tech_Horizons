@@ -1,14 +1,17 @@
+// Gestion du menu de navigation mobile
 document.addEventListener('DOMContentLoaded', () => {
     const navButton = document.querySelector('.nav-button');
     const navMenu = document.querySelector('.nav-menu');
     let isOpen = false;
 
+    // Toggle le menu de navigation
     navButton.addEventListener('click', () => {
-        isOpen = !isOpen;  // Corrigé ici
+        isOpen = !isOpen;
         navMenu.classList.toggle('active');
         navButton.classList.toggle('nav-button-active');
     });
 
+    // Ferme le menu de navigation si click en dehors
     document.addEventListener('click', (event) => {
         const isClickInside = navButton.contains(event.target) || navMenu.contains(event.target);
 
@@ -20,20 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Gestion du lien de déconnexion
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionner le lien par son attribut data
     const logoutLink = document.querySelector('[data-logout]');
     const logoutForm = document.querySelector('.form-logout');
 
     if (logoutLink && logoutForm) {
-        // Ajouter l'événement click sur le lien
+        // Gestionnaire d'événement pour le clic sur le lien
         logoutLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            logoutForm.submit();
+            event.preventDefault(); // Bloque l'action par défaut du lien
+            logoutForm.submit(); // Soumet le formulaire de déconnexion
         });
     }
 });
 
+// Gestion de la modale de suppression
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('deleteModal');
     const modalBackdrop = document.getElementById('deleteModal-backdrop');
@@ -68,18 +73,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Confirmer la suppression
     confirmButton.addEventListener('click', function () {
         if (currentFormId) {
-            document.getElementById(currentFormId).submit();
+            document.getElementById(currentFormId).submit(); // Soumission du formulaire
         }
         modal.classList.remove('active');
-        modalBackdrop.classList.remove('active');
+        modalBackdrop.classList.remove('active'); // Fermeture après confirmation
     });
 });
 
+// Gestion de selection de theme en fonction du role 
 document.addEventListener('DOMContentLoaded', function () {
     const roleSelect = document.querySelector('[name="role"]');
     const themeSelect = document.querySelector('[name="theme_id"]');
     const themeSelectContainer = themeSelect?.closest('.form-fields > div');
 
+    // Gestion de l'affichage conditionnel du thème
     function toggleThemeSelect() {
         if (roleSelect && themeSelectContainer && themeSelect) {
             const isResponsable = roleSelect.value === 'Responsable';
@@ -93,11 +100,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-
-    // Initial state
+    // Initialisation au chargement
     toggleThemeSelect();
 
-    // Listen for changes
+    // Écouteur de changement de rôle
     if (roleSelect) {
         roleSelect.addEventListener('change', toggleThemeSelect);
     }

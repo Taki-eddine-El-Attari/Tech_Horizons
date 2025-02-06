@@ -91,7 +91,7 @@ Array.from(document.querySelectorAll(".rating")).forEach(
     (ratingEl) => new Rating(ratingEl)
 );
 
-// Ajoutez ce code à la fin du fichier
+// Gestionnaire d'événements pour la modale de suppression
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('deleteModal');
     const modalBackdrop = document.getElementById('deleteModal-backdrop');

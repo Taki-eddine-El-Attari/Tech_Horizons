@@ -8,9 +8,7 @@ use Illuminate\View\Component;
 
 class Input_auth extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    // Constructeur du composant Input_auth
     public function __construct(
         public string $name,
         public string $label,
@@ -20,12 +18,11 @@ class Input_auth extends Component
         public string $help = '',
     )
     {
+        // Si $id n'est pas défini, on l'assigne à $name
         $this->id ??= $this->name;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
+    // Rendu de la vue du composant
     public function render(): View|Closure|string
     {
         return view('components.input_auth');

@@ -1,24 +1,15 @@
 <?php
 
 namespace App\Models;
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Enumérations\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    use HasFactory;
+ 
+    // Champs autorisés pour la créeation et la mise à jour
     protected $fillable = [
         'name',
         'email',
@@ -26,22 +17,14 @@ class User extends Authenticatable
         'role',
         'theme_id' 
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+   
+    // Champs cachés pour la créeation et la mise à jour
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    // Conversion automatique des types de données
     protected function casts(): array
     {
         return [
@@ -51,31 +34,37 @@ class User extends Authenticatable
         ];
     }
 
+    // Vérifie si l'utilisateur est un éditeur
     public function isEditeur(): bool
     {
         return $this->role === Role::Editeur;
     }
 
+    // Vérifie si l'utilisateur est un responsable
     public function isResponsable(): bool
     {
         return $this->role === Role::Responsable;
     }
 
+    // Vérifie si l'utilisateur est un abonné
     public function isAbonne(): bool
     {
         return $this->role === Role::Abonne;
     }
 
+    // Relation many-to-many (n,m) avec les thèmes via la table abonnements
     public function themes()
     {
         return $this->belongsToMany(Theme::class, 'abonnements');
     }
 
+    // Relation one-to-many (1,n) avec l'historique de navigation
     public function browsingHistories()
     {
         return $this->hasMany(Historique::class);
     }
 
+    // Relation one-to-one (1,1) avec le thème de l'utilisateur
     public function theme()
     {
         return $this->belongsTo(Theme::class);

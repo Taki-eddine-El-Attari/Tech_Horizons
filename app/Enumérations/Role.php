@@ -2,7 +2,7 @@
 
 namespace App\Enumérations;
 
-enum Role : string
+enum Role: string
 {
     case Editeur = 'Éditeur';
     case Responsable = 'Responsable';
@@ -10,7 +10,7 @@ enum Role : string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::Abonne => 'Abonné',
             self::Responsable => 'Responsable',
             self::Editeur => 'Éditeur',
@@ -19,5 +19,6 @@ enum Role : string
 
     public static function values(): array
     {
-        return array_map(fn($case) => $case->value, self::cases());    }
+        return array_map(fn($case) => $case->value, self::cases());
+    }
 }

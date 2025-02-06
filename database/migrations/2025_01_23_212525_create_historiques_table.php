@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // crée la table 'historiques'
     public function up()
 {
     Schema::create('historiques', function (Blueprint $table) {
@@ -20,9 +18,7 @@ return new class extends Migration
     });
 }
 
-    /**
-     * Reverse the migrations.
-     */
+    // supprime la table 'historiques'
     public function down(): void
     {
         Schema::dropIfExists('historiques');

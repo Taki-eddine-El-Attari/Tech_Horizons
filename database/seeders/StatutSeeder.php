@@ -6,12 +6,9 @@ use App\Models\Statut;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-
 class StatutSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // Crée des statuts
     public function run(): void
     {
         $statuts = collect(['Refus','En Cours','Publié']);

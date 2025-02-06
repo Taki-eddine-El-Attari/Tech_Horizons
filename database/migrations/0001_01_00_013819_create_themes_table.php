@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // Crée la table 'themes'
     public function up(): void
     {
         Schema::create('themes', function (Blueprint $table) {
@@ -20,14 +18,12 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+    
+    // Supprime la table 'themes'
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('themes');
-        Schema::enableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();// Désactive les contraintes
+        Schema::dropIfExists('themes'); // Supprime la table
+        Schema::enableForeignKeyConstraints(); // Réactive les contraintes
     }
 };

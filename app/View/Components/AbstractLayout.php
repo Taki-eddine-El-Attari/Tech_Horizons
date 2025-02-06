@@ -6,9 +6,7 @@ use Illuminate\View\Component;
 
 abstract class AbstractLayout extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    // Titre de la page
     public function __construct(public string $titre = '')
     {
         $this->titre = config('app.name') . ($titre ? ' | ' . $titre : '');

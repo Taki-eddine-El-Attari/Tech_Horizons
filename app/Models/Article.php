@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,24 +13,26 @@ use Illuminate\Http\Request;
 
 class Article extends Model
 {
-    use HasFactory;
-
+    // Champs non modifiables et protégé
     protected $guarded = ['id' , 'created_at', 'updated_at'];
 
+    // Relations chargées automatiquement avec l'article
     protected $with = [
         'theme',
         'statut',
         'numero',
     ];
     
+    // Utilise le slug comme identifiant dans les URLs
     public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
+    // Filtre les articles selon différents critères
     public function scopeFilters(Builder $query, array $filters): void
     {
-        
+        // Filtre par recherche textuelle
         if(isset($filters['search'])){
             $query->where(fn (Builder $query) => $query
             ->where('titre', 'like', '%'.$filters['search'].'%')
@@ -43,37 +44,44 @@ class Article extends Model
             );
         }
 
+        // Filtre par thème spécifique
         if(isset($filters['theme'])){
             $query->where('theme_id', $filters['theme']->id ?? $filters['theme']);
         } 
 
     }
 
+    // Relation one-to-one (1,1) avec le thème associé
     public function theme() : BelongsTo {
         return $this->belongsTo(Theme::class);
 
     }
 
+    // Relation one-to-one (1,1) avec le numéro de publication associé
     public function numero() : BelongsTo {
         return $this->belongsTo(Numero::class);
 
     }
 
+    // Relation one-to-one (1,1) avec le statut de l'article
     public function statut(): BelongsTo
     {
         return $this->belongsTo(Statut::class);
     }
 
+    // Relation one-to-many (1,n) avec les commentaires associés
     public function commentaire(): HasMany
     {
         return $this->hasMany(Commentaire::class)->orderByDesc('created_at');
     }
 
+    // Vérifie si l'article existe
     public function exists(): bool
     {
         return (bool) $this->id;
     }
 
+    // Enregistre un nouveau commentaire
     public function addCommentaire(Article $article, Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -91,18 +99,15 @@ class Article extends Model
         return back()->with('status', 'Commentaire publié !');
     }
 
+    // Calcule la note moyenne
     public function calculateAverageRating()
     {
         $comments = $this->commentaire;
-        
-        if ($comments->isEmpty()) {
-            return 0;
-        }
-        
         $sumRatings = $comments->sum('note');
         $totalComments = $comments->count();
-        
-        return round($sumRatings / $totalComments, 1);
+
+        return round($sumRatings / $totalComments,1);
     }
 
 }
+ 

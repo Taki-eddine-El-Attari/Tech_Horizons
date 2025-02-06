@@ -20,12 +20,14 @@ class HomeController extends BaseController
         $this->middleware('auth');
     }
     
+    // Affiche les themes dans la session des abonnements
     public function index(): View
     {
         $themes = Theme::all();
         return view('Home.index', compact('themes'));
     }
 
+    // Met à jour les abonnements de l'utilisateur
     public function updatetheme(Request $request): RedirectResponse
     {
         $user = Auth::user();
@@ -39,6 +41,7 @@ class HomeController extends BaseController
         return redirect()->route('home')->withStatus('Thèmes mis à jour avec succès !');
     }
 
+    // Met à jour le profil de l'utilisateur
     public function updateProfile(Request $request): RedirectResponse
     {
         $user = Auth::user();
@@ -53,6 +56,7 @@ class HomeController extends BaseController
         return redirect()->route('home')->withStatus('Informations mises à jour avec succès !');
     }
 
+    // Met à jour le mot de passe de l'utilisateur
     public function updatePassword(Request $request): RedirectResponse
     {
         $user = Auth::user();
@@ -77,6 +81,7 @@ class HomeController extends BaseController
         return redirect()->route('home')->withStatus('Mot de passe mis à jour avec succès !');
     }
 
+    // Affiche l'historique des activités
     public function history(Request $request): View
     {
         $histories = Historique::where('user_id', Auth::id())
@@ -91,6 +96,7 @@ class HomeController extends BaseController
         return view('Historique.index', compact('histories', 'themes'));
     }
 
+    // Supprime un élément de l'historique
     public function destroyHistory(Historique $history): RedirectResponse
     {
         if ($history->user_id !== Auth::id()) {

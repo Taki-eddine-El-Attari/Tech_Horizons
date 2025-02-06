@@ -26,7 +26,8 @@ class CrudUserController extends BaseController
         }]);
     }
 
-    public function index()
+    // Affiche la liste des utilisateurs
+    public function index(): View
     {
         $query = User::without('password')->orderBy('created_at', 'desc');
         
@@ -39,18 +40,21 @@ class CrudUserController extends BaseController
             'users' => $query->get()
         ]);
     }
-
+        
+    //Affiche le formulaire de création d'article
     public function create()
     {
         return $this->showForm();
     }
 
-    public function edit($id)
+    // Affiche le formulaire de modification
+    public function edit($id) 
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id); // Recherche de l'utilisateur par ID
         return $this->showForm($user);
     }
 
+    // Affiche le formulaire
     public function showForm(?User $user = null): View
     {
         $user = $user ?? new User();
@@ -60,18 +64,21 @@ class CrudUserController extends BaseController
 
         ]);
     }
-
+        
+    // Ajout d'un nouvel utilisateur
     public function store(UserRequest $request): RedirectResponse
     {
         return $this->save($request->validated());
     }
-
+        
+    // Modification d'un utilisateur
     public function update(UserRequest $request, $id): RedirectResponse
     {
         $user = User::findOrFail($id);
         return $this->save($request->validated(), $user);
     }
 
+    // Enregistre un nouvel utilisateur
     public function save(array $data, User $user = null): RedirectResponse
     {
         // Gestion du theme_id
@@ -102,6 +109,7 @@ class CrudUserController extends BaseController
             ->withStatus($user->wasRecentlyCreated ? 'Utilisateur ajouté avec succès' : 'Utilisateur mis à jour avec succès');
     }
 
+    // Supprime un utilisateur
     public function destroy($id): RedirectResponse
     {
         $user = User::findOrFail($id);

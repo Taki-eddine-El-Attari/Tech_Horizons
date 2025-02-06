@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    // Ajoute la colonne 'theme_id' dans la table 'articles'
     public function up(): void
     {
         Schema::table('articles', function (Blueprint $table) {
@@ -16,14 +14,12 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    // Supprime la colonne 'theme_id' et la contrainte de la table 'articles'
     public function down(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropForeign(['theme_id']);
-            $table->dropColumn('theme_id');
+            $table->dropForeign(['theme_id']); // Supprime la contrainte
+            $table->dropColumn('theme_id'); // Supprime la colonne
         });
     }
 };

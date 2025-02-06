@@ -8,19 +8,13 @@ use App\Enumérations\Role;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    // Vérifie les autorisations utilisateur
     public function authorize(): bool
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+    
+    // Règles de validation pour les utilisateurs
     public function rules(): array
     {
         $rules = [
@@ -43,6 +37,7 @@ class UserRequest extends FormRequest
         return $rules;
     }
 
+    // Messages d'erreur pour les règles de validation
     public function message(): array
     {
         return [

@@ -21,10 +21,8 @@ class CrudArticleController extends BaseController
         
         $this->middleware('auth');
     }
-
-    /**
-     * Display a listing of the resource.
-     */
+    
+    //Affiche l'interface de gestion des article
     public function index()
     {
         $user = Auth::user();
@@ -43,23 +41,20 @@ class CrudArticleController extends BaseController
             'articles' => $articles
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+   
+    //Affiche le formulaire de création d'article
     public function create(): View
     {
         return $this->showForm();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Affiche le formulaire de modification
     public function edit(Article $article)
     {
         return $this->showForm($article);
     }
 
+    // Affiche le formulaire
     protected function showForm(Article $article = new Article): View
     {
         return view('admin.articles.form', [
@@ -70,23 +65,19 @@ class CrudArticleController extends BaseController
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Ajout d'un nouvel article
     public function store(ArticleRequest $request): RedirectResponse
     {
         return $this->save($request->validated());
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
+    // Modification d'un article
     public function update(ArticleRequest $request, Article $article): RedirectResponse
     {
         return $this->save($request->validated(), $article);
     }
 
+    // Enregistre un nouvel article
     protected function save(array $data, Article $article = null): RedirectResponse
     {
         $user = Auth::user();
@@ -126,9 +117,7 @@ class CrudArticleController extends BaseController
             ->withStatus($article->wasRecentlyCreated ? ($user->isAbonne() ? 'Article en cours de traitement par les responsables' : 'Article publié avec succès') : 'Article mis à jour avec succès');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Supprime l'article
     public function destroy(Article $article): RedirectResponse
     {
         Storage::delete($article->image);

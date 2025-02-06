@@ -7,26 +7,20 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * @var string
-     */
+    // Définit la route de redirection après authentification
     public const HOME = '/home';
 
-    // ...existing code...
-
+    // Active les middlewares personnalisés dans les routes
     public function boot()
     {
-        // ...existing code...
-
         $this->registerMiddleware();
     }
 
+    // Enregistre les middlewares personnalisés pour l'utilisation dans les routes
     protected function registerMiddleware()
     {
         Route::aliasMiddleware('editeur', \App\Http\Middleware\Editeur::class);
+        Route::aliasMiddleware('responsable', \App\Http\Middleware\Responsable::class);
     }
 
-    // ...existing code...
 }

@@ -10,6 +10,7 @@ use App\Models\Numero;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class StatistiqueController extends BaseController
 {
@@ -23,7 +24,8 @@ class StatistiqueController extends BaseController
         }]);
     }
 
-    public function index()
+    // Affiche les statistiques globales
+    public function index(): View
     {
         $articles = Article::all();
         $users = User::all();

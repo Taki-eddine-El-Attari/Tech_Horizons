@@ -18,13 +18,4 @@ class Editeur
 
         return redirect(RouteServiceProvider::HOME);
     }
-
-    /**
-     * Vérifie si l'utilisateur a des droits d'édition spécifiques
-     */
-    protected function checkEditPermissions(): bool
-    {
-        return Auth::user()->hasEditPermission();
-    }
-
 }

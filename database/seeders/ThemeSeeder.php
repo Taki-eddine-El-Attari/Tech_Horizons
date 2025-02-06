@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class ThemeSeeder extends Seeder
 {
+    // Crée des themes
     public function run(): void
     {
         $themesData = [

@@ -8,9 +8,7 @@ use Illuminate\Database\Seeder;
 
 class NumeroSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // Crée des numéros
     public function run(): void
     {
         $numeros = collect(['1', '2', '3','4','5']);

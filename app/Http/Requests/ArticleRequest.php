@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -10,6 +9,14 @@ use Illuminate\Validation\Rule as Rule;
 
 class ArticleRequest extends FormRequest
 {
+
+    // Vérifie les autorisations d'accès
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    // Prépare les données avant validation
     protected function prepareForValidation(): void
     {
         $this->merge([
@@ -17,11 +24,7 @@ class ArticleRequest extends FormRequest
         ]);
     }
 
-    public function authorize(): bool
-    {
-        return true;
-    }
-
+    // Règles de validation pour les articles
     public function rules(Request $request): array
     {
         return [
@@ -35,6 +38,7 @@ class ArticleRequest extends FormRequest
         ];
     }
 
+    // Messages d'erreur pour les règles de validation
     public function messages(): array
     {
         return [

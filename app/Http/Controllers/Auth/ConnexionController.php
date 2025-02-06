@@ -15,15 +15,15 @@ class ConnexionController extends BaseController
     {
         $this->middleware('guest')->except('deconnexion');
         $this->middleware('auth')->only('deconnexion');
-
     }
 
-
+    // Affiche le formulaire de connexion
     public function showConnexionForm(): View
     {
         return view('auth.connexion');
     }
 
+    // Traite la tentative de connexion
     public function Connexion(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
@@ -39,10 +39,9 @@ class ConnexionController extends BaseController
         return back()->withErrors(
             ['email' => 'Les identifiants fournis ne correspondent à aucun compte.']
         )->onlyInput("email");
-
-
     }
 
+    // Déconnecte l'utilisateur
     public function deconnexion(Request $request): RedirectResponse
     {
       Auth::logout();
