@@ -10,6 +10,13 @@ class DatabaseSeeder extends Seeder
     // Exécute les seeders et crée des utilisateurs
     public function run(): void
     {
+        // Crée les seeders
+        $this->call([
+            ThemeSeeder::class,
+            NumeroSeeder::class,
+            StatutSeeder::class,
+        ]);
+
         // Crée 10 utilisateurs avec la factory
         User::factory(10)->create();
         
@@ -21,10 +28,8 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Crée les articles après les utilisateurs pour les commentaires
         $this->call([
-            ThemeSeeder::class,
-            NumeroSeeder::class,
-            StatutSeeder::class,
             ArticleSeeder::class,
         ]);
     }
