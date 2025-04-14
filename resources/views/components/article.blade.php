@@ -3,7 +3,7 @@
 {{-- Début du post --}}
     <article class="post">
         <div class="post-image-container">
-            <img class="post-image" src="{{ str_starts_with($article->image , 'http') ? $article->image : asset('storage/' . $article->image )}}">
+            <img class="post-image" src="{{ str_starts_with($article->image, 'http') ? $article->image : asset('storage/Images_Articles/' . basename($article->image)) }}">
         </div>
         <div class="post-content">
             @if ($article->theme)

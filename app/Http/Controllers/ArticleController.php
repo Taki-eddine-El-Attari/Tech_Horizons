@@ -18,7 +18,7 @@ class ArticleController extends BaseController
     // Initialise le contrôleur
     public function __construct()
     {
-        $this->middleware('auth')->only(['commentaire']);
+        $this->middleware('auth')->only('commentaire');
     }
 
     // Affiche la liste des articles

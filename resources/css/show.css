@@ -29,6 +29,13 @@
     margin-top: -10px;
 }
 
+.theme-date {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    margin-top: 20px;
+}
+
 /* Conteneur principal */
 .comment-container {
     display: flex;

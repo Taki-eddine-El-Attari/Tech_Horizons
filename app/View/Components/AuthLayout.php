@@ -13,14 +13,13 @@ class AuthLayout extends AbstractLayout
         public string $action = '',
         public string $submitMessage = "Soumettre",
         public string $titreAuth = '',
-    )
-    {
-        parent::__construct($titre);    
+    ) {
+        parent::__construct($titre);
     }
 
     // Retourne la vue du composant
     public function render(): View|Closure|string
     {
-        return view('layouts.auth');
+        return view('Layouts.auth');
     }
 }

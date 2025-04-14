@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^(.*)$ /Tech_Horizons/public/$1 [L]
+</IfModule>

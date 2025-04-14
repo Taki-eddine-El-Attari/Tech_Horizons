@@ -18,10 +18,10 @@ class CrudArticleController extends BaseController
 {
     public function __construct()
     {
-        
+
         $this->middleware('auth');
     }
-    
+
     //Affiche l'interface de gestion des article
     public function index()
     {
@@ -29,8 +29,8 @@ class CrudArticleController extends BaseController
         $query = Article::with(['theme', 'numero', 'statut']);
 
         // Si l'utilisateur est responsable, on affiche uniquement les articles de son thème
-        if ($user->isResponsable()) { 
-            $query->whereHas('theme', function($q) use ($user) { 
+        if ($user->isResponsable()) {
+            $query->whereHas('theme', function ($q) use ($user) {
                 $q->where('id', $user->theme_id);
             });
         }
@@ -41,7 +41,7 @@ class CrudArticleController extends BaseController
             'articles' => $articles
         ]);
     }
-   
+
     //Affiche le formulaire de création d'article
     public function create(): View
     {

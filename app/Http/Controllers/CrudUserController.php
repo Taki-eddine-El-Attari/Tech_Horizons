@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
 
-
-
 class CrudUserController extends BaseController
 {
 

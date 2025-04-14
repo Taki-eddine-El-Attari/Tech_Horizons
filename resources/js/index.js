@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Gestion de selection de theme en fonction du role 
+// Gestion de selection de theme pour le responsable
 document.addEventListener('DOMContentLoaded', function () {
     const roleSelect = document.querySelector('[name="role"]');
     const themeSelect = document.querySelector('[name="theme_id"]');

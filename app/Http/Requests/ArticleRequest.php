@@ -29,16 +29,16 @@ class ArticleRequest extends FormRequest
     {
         return [
             'titre' => 'required|min:3|max:255',
-            'slug' => ['required','min:3' , 'max:255', Rule::unique('articles')->ignore($this->article)],
+            'slug' => ['required', 'min:3', 'max:255', Rule::unique('articles')->ignore($this->article)],
             'contenu' => 'required|min:10',
-            'image' => [Rule::requiredIf($request->isMethod('post')), 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'image' => [Rule::requiredIf($request->isMethod('post')), 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'theme_id' => 'required|exists:themes,id',
             'numero_id' => 'required|exists:numeros,id',
             'statut_id' => Rule::when($this->isMethod('PUT'), ['required', 'exists:statuts,id']),
         ];
     }
 
-    // Messages d'erreur pour les règles de validation
+    // Messages d'erreur pour les régles de validation
     public function messages(): array
     {
         return [

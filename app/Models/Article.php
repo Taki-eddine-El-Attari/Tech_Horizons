@@ -48,7 +48,6 @@ class Article extends Model
         if(isset($filters['theme'])){
             $query->where('theme_id', $filters['theme']->id ?? $filters['theme']);
         } 
-
     }
 
     // Relation one-to-one (1,1) avec le thème associé
@@ -105,6 +104,10 @@ class Article extends Model
         $comments = $this->commentaire;
         $sumRatings = $comments->sum('note');
         $totalComments = $comments->count();
+
+        if ($totalComments === 0) {
+            return 0;
+        }
 
         return round($sumRatings / $totalComments,1);
     }
